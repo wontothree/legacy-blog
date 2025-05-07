@@ -6,8 +6,6 @@ main:
 sidebar-category:
   - title: "Robotics"
     children:
-      - title: "ROS2"
-        url: /ros2
       - title: "Probabilistic Robotics"
         url: /probablisticrobotics
       - title: "Digital Control"
@@ -52,7 +50,7 @@ sidebar-category:
         url: /optimization
       - title: "Engineering Mathematics"
         url: /engineeringmathematics  
-  - title: "Paper Review"
+  - title: "Temp"
     children:
       - title: "Paper"
         url: /paper
@@ -60,3 +58,5 @@ sidebar-category:
         url: /f1tenth_ 
       - title: "Tmp"
         url: /tmp        
+      - title: "ROS2"
+        url: /ros2
