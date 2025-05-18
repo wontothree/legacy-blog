@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 탐색"
-excerpt: "두근두근 자료구조 : Ch14"
+title: "[DS] 탐색"
 categories: 
   - datastructure
 ---

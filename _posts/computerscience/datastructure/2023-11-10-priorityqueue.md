@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 우선순위 큐"
-excerpt: "두근두근 자료구조 : Ch10"
+title: "[DS] 우선순위 큐"
 categories: 
   - datastructure
 ---

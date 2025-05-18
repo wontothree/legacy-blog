@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 포인터와 연결리스트"
-excerpt: "두근두근 자료구조 : Ch05"
+title: "[DS] 포인터와 연결리스트"
 categories: 
   - datastructure
 ---

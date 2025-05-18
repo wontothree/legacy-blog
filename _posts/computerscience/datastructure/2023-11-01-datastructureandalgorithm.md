@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 자료구조와 알고리즘"
-excerpt: "두근두근 자료구조 : Ch01"
+title: "[DS] 자료구조와 알고리즘"
 categories: 
   - datastructure
 ---

@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 배열과 구조체"
-excerpt: "두근두근 자료구조 : Ch02"
+title: "[DS] 배열과 구조체"
 categories: 
   - datastructure
 ---

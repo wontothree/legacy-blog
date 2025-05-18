@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 이진탐색트리"
-excerpt: "두근두근 자료구조 : Ch09"
+title: "[DS] 이진탐색트리"
 categories: 
   - datastructure
 ---

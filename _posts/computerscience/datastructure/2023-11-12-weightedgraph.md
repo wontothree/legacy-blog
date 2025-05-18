@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 가중치 그래프"
-excerpt: "두근두근 자료구조 : Ch12"
+title: "[DS] 가중치 그래프"
 categories: 
   - datastructure
 ---

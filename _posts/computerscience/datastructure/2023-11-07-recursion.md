@@ -1,6 +1,5 @@
 ---
-title: "[Date Structure] 순환"
-excerpt: "두근두근 자료구조 : Ch07"
+title: "[DS] 순환"
 categories: 
   - datastructure
 ---
