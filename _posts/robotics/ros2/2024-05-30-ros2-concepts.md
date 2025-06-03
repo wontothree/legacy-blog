@@ -1,6 +1,5 @@
 ---
 title: "[ROS2] ROS Concepts"
-excerpt:
 categories: 
   - ros2
 ---
