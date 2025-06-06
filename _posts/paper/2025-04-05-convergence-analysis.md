@@ -121,7 +121,13 @@ Basic properties of continuous positive semidefinite kernels:
 
 (e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$.
 
+<br>
+<br>
+<br>
+
 # Continuous PEP
+
+이 논문은 first-order methods의 ODE 모델에 대한 수렴률을 분석하는 새로운 프레임워크를 제시한다. (Continuous-time performance estimation problem (continuous PEP)). 이를 설명하기 위해서 accelerated gradient flow를 예로 들자.
 
 Nesterov’s Accelerated Gradient Method에 대한 limiting ODE는 다음과 같다.
 
@@ -143,7 +149,7 @@ $$
 f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
 $$
 
-우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#DB4455; font-weight: bold;">Exact PEP</span>)를 구성한다.
+우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#fff5b1;">Exact PEP</span>)를 구성한다.
 
 <div class="latex-container">
   $$
@@ -169,7 +175,7 @@ $$
 f \in \mathcal{F}_0(\mathbb{R}^d; \mathbb{R})
 $$
 
-을 충분조건인 등식과 부등식으로 대체함으로써 Exact PEP 대신 relax된 최적화 문제(<span style="color: #000000; background-color:#DB4455; font-weight: bold;">Relaxed PEP</span>)를 다룬다.
+을 충분조건인 등식과 부등식으로 대체함으로써 Exact PEP 대신 relax된 최적화 문제(<span style="color: #000000; background-color:#fff5b1;">Relaxed PEP</span>)를 다룬다.
 
 <br>
 
@@ -206,22 +212,24 @@ where $v = (x^* - x_0)/\vert\vert x_0 - x^* \vert\vert$. 이는 $f \in \mathcal{
 
 따라서 Relatex PEP는 다음과 같다.
 
-<!-- <div class="latex-container"> -->
-  $$
-  \begin{align*}
-  & \underset{ \rho, \gamma, v}{\max} \;\; \dfrac{f(X(t)) - f(x^*)}{\vert\vert x_0 - x^* \vert\vert^2} \\
-  & \mathrm{subject \; to} \;\;\; t \in (0, T), \\
-  & 0 = \dot{\rho}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle \\
-  & 0 \geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle \\
-  \end{align*}
-  $$
-<!-- </div> -->
+$$
+\begin{align*}
+& \underset{ \rho, \gamma, v}{\max} \;\; \dfrac{f(X(t)) - f(x^*)}{\vert\vert x_0 - x^* \vert\vert^2} \\
+& \mathrm{subject \; to} \;\;\; t \in (0, T), \\
+& 0 = \dot{\rho}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle \\
+& 0 \geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle \\
+\end{align*}
+$$
 
 val(Relaxed PEP) $\geq$ val(Exact PEP) 이므로 $\rho = $ val(Relaxed PEP)로 잡을 때 이는 더 느슨한 upper bound라고 할 수 있다.
 
 ## Lagrangian dual of relaxed PEP
 
-Let Lagrange multipliers
+To obtain an upper bound on val(Relaxed PEP), we use Lagrangian duality.
+
+<br>
+
+Let <span style="color: #000000; background-color:#fff5b1;">Lagrange multipliers</span>
 
 $$
 \lambda_1 \in C^1 ([0, T]; \mathbb{R}), \;\;\; \lambda_2 \in C ([0, T]; \mathbb{R}_{\geq 0})
@@ -229,7 +237,9 @@ $$
 
 which are continuous and differentiable to ensure that the dual problem is well-defined.
 
-Then we define the Lagrangian function as
+<br>
+
+Then we define the <span style="color: #000000; background-color:#fff5b1;">Lagrangian function</span> and express in terms of the inner products in function spaces
 
 $$
 \begin{align*}
@@ -241,13 +251,15 @@ $$
 \end{align*}
 $$
 
-where K is the Hibert-Schmidt integral operator with the symmetric kernel k defined by
+where $K$ is the Hibert-Schmidt integral operator with the symmetric kernel k defined by
 
 $$
 k(t, \gamma) = \lambda_1(t) H(t, \tau) + \lambda_2 \int_{\tau}^t H(s, \tau) ds, \;\;\; t \geq \tau
 $$
 
-The dual function is defined as
+<br>
+
+The <span style="color: #000000; background-color:#fff5b1;">dual function</span> is defined as
 
 $$
 \begin{align*}
@@ -263,13 +275,15 @@ $$
 \end{align*}
 $$
 
-where $S_{\lambda_1, \lambda_2, \nu}$ is a symmetric kernel on $[0, T]^2$ (PEP kernel) given by
+where $S_{\lambda_1, \lambda_2, \nu}$ is a symmetric kernel on $[0, T]^2$ (<span style="color: #000000; background-color:#fff5b1;">PEP kernel</span>) given by
 
 $$
 S_{\lambda_1, \lambda_2, \nu} (t, \tau) = \nu \left( \lambda_1(t) H(t, \tau) + \lambda_2(t) \int_{\tau}^t H(s, \tau) ds \right) - \dfrac{1}{2} \lambda_2(t) \lambda(\tau), \;\;\; t \geq \tau
 $$
 
-Gieven $\nu_{\text{feas}} \in (0, \infty)$, suppose $S_{\lambda_1, \lambda_2, \nu_{\text{feas}}}$ is positive semidefinite with appropriate multiplier functions $\lambda_1$ and $\lambda_2$, and then $\nu_{\text{feas}}$ is a feasible solution of that minimization problem of dual problem.
+<br>
+
+Given $\nu_{\text{feas}} \in (0, \infty)$, suppose $S_{\lambda_1, \lambda_2, \nu_{\text{feas}}}$ is positive semidefinite with appropriate multiplier functions $\lambda_1$ and $\lambda_2$, and then $\nu_{\text{feas}}$ is a feasible solution of that minimization problem of dual problem.
 
 Thus
 
@@ -277,11 +291,48 @@ $$
 \text{Dual} (\lambda_1, \lambda_2) \leq \nu_{\text{feas}}
 $$
 
-Therefore
+<br>
+
+Therefore, by weak duality,
 
 $$
 \text{val(Relatex PEP)} \leq \text{val(Exact PEP)} \leq \text{Dual} (\lambda_1, \lambda_2) \leq \nu_{\text{feas}}
 $$
+
+이걸 이용하면 우리는 알려진 AGM ODE의 convergance guarantee $\rho = \dfrac{2}{T^2}$을 얻을 수 있다.
+
+## Proposition 2
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  AGM ODE achieves the convergence rate
+
+  $$
+  f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
+  $$
+
+  with $\rho = \dfrac{2}{T^2}$.
+</div>
+
+<br>
+
+*Proof*. Let multiplier functions
+
+$$
+\lambda_1(t) = \dfrac{t^2}{T^2}, \quad \lambda_2(t) = \dfrac{2t}{T^2}
+$$
+
+and then PEP kernel is
+
+$$
+\begin{align*}
+  S_{\lambda_1, \lambda_2, \nu} (t, \tau) &= \nu \left( \lambda_1(t)H(t, \tau) + \lambda_2(t) \int_{\tau}^{t}H(s, \tau) ds \right) - \dfrac{1}{2} \lambda_2(t) \lambda_2(\tau) \\
+  &= \nu \left( \dfrac{t^2}{T^2} \dfrac{\tau^3}{t^3} + \dfrac{2t}{T^2} \int_{\tau}^{t} \dfrac{\tau^3}{s^3} ds \right) - \dfrac{1}{2} \dfrac{2t}{T^2} \dfrac{2\tau}{T^2} \\
+  &= \nu \left( \dfrac{\tau^3}{t T^2} + \dfrac{2t}{T^2} \left( \dfrac{1}{2\tau^2} - \dfrac{1}{2t^2} \right) \right) - \dfrac{2t\tau}{T^4} \\
+  &= \left( \nu - \dfrac{2}{T^2} \right) \dfrac{t \tau}{T^2}
+\end{align*}
+$$
+
+# Example
 
 ## Reparametrization
 
@@ -292,8 +343,6 @@ $$
 $$
 
 μ-strongly convex 함수에도 동일한 방법을 적용할 수 있다.
-
-# Example
 
 Continuous PEP를 이용해서 각 ODE 모델의 수렴 속도를 분석해보자.
 
@@ -336,3 +385,5 @@ background-color: #f9f9f9;
 <span style="color: #000000; background-color:#fff5b1;">
 
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+<div class="latex-container"><div>
