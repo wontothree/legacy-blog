@@ -112,15 +112,25 @@ for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   Basic properties of continuous positive semidefinite kernels:
 
+  <br>
+
   (a) For $\alpha \in C([0, T]; \mathbb{R})$, the kernel $k(t, \tau) = \alpha(t) \alpha(\tau)$ is positive definite.
+
+  <br>
 
   (b) For $k_1, k_2 \succeq 0$, their product $k(t, \tau) = k_1(t, \tau) k_2(t, \tau)$ is positive definite.
 
+  <br>
+
   (c) For $k \succeq 0$, its anti-transpose $(t, \tau) \mapsto k(T - \tau, T - t)$ is also positive semidefinite.
+
+  <br>
 
   (d) If $\alpha \in C^1([0, T]; \mathbb{R}_{\geq 0})$ is an increasing function on $[0, T]$, then the symmetric kernel $k$ defined as $k(t, \tau) = \alpha(\tau)$ for $t \leq \tau$ is positive semidefinite.
 
-  (e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$.
+  <br>
+
+  (e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$. 
 </div>
 
 <br>
