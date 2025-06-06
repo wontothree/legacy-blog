@@ -6,7 +6,8 @@ categories:
 - novel methodology that systematically analyzes ODE models for first-roder optimization methods
 - establish convergence rates of various accelerated gradient flow models.
 - Lagrangian dual of a related version of continuous-time PEP를 기반으로 만들어졌다.
-- 수렴 속도를 증명하는 작업을 특정 적분 커널의 positive semidefiniteness을 검증하는 문제로 변환한다. (?)
+- 수렴 속도를 증명하는 작업을 특정 적분 커널의 positive semidefiniteness을 검증하는 문제로 변환한다.
+- 전통적인 ODE models의 convergence analysis에서 적절한 Lyapunov functions을 찾는 것은 어려운 문제이다. 하지만 이 방법론은 특정한 적분 커널의 positive semidefinite을 보이기만 하면 되기 때문에 쉽게 ODE models의 수렴 속도를 증명할 수 있다.
 
 # Preliminaries: functional analysis
 
