@@ -20,7 +20,7 @@ categories:
   <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$C^1([0, T]; \mathbb{R}^d)$</span> : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 </div>
 
-정의역을 모든
+일반적인 stability의 정의에서 모든 t에 대해 다루는 반면 이 논문에서는 전반적으로 유한한 시간 구간까지를 다룬다. 문제를 조금 더 단순화한 것이다.
 
 <br>
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
@@ -30,6 +30,9 @@ categories:
   \int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty
   $$
 </div>
+
+Function의 measurability는 function의 continuity의 확장이다. Measurable해야 적분이 정의된다.
+
 <br>
 
 Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space equipped with an inner product and a norm
@@ -37,6 +40,8 @@ Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space equipped with an inner produ
 $$
 \langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt, \quad \vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
 $$
+
+Hilbert Space는 inner proudct와 norm이 정의된다. Hilbert space는 $L^2$를 포함한다.
 
 ## Integral operators
 
@@ -47,8 +52,19 @@ $$
   (K f)(t) = \int_0^T k(t, \tau) f(\tau) d\tau
   $$
 
-  where $k: [0, T] \rightarrow \mathbb{R}$ is the associated integral kernel.
+  where $k: [0, T] \rightarrow \mathbb{R}$ is the <span style="color: #000000; background-color:#DB4455; font-weight: bold;">associated integral kernel</span>.
 </div>
+
+Integral operator가 linear함을 증명해보자.
+
+$$
+\begin{align*}
+  (K (f + g))(t) &= \int_0^T k(t, \tau) (f + g)(\tau) d\tau \\
+  &= \int_0^T k(t, \tau) (f(\tau) + g(\tau)) d\tau \\
+  &= \int_0^T k(t, \tau) f(\tau) d\tau + \int_0^T k(t, \tau) g(\tau) d\tau \\
+  &= (K f)(t) + (K g)(t)
+\end{align*}
+$$
 
 <br>
 
@@ -60,21 +76,29 @@ $$
   $$
 </div>
 
+$L^2$ space라는 것 자체가 특별하기 때문에 이름이 붙은 것이다.
+
 <br>
 
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
-  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
+  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ when $k$ is a Hilbert-Schmidt kernel.
 </div>
 
 <br>
 
-If a Hilbert-Schmidt kernel k is symmetric, i.e., $k(t, \tau) = k (\tau, t)$ for all $t, \tau \in [0, T]$, then the associated operator is also symmetric in the sense that
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  Hilbert-Schmidt kernel k is symmetric : $k(t, \tau) = k (\tau, t)$ for all $t, \tau \in [0, T]$
+  <br>
+  The associated operator is symmetric : $\langle Kf, g \rangle = \langle f, K g \rangle$ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
+</div>
 
-$$
-\langle Kf, g \rangle = \langle f, K g \rangle
-$$
+<br>
 
-for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  If a Hilbert-Schmidt kernel k is symmetric, then the associated operator is also symmetric.
+</div>
+
+*Proof*. $d = 1$일 때에 대해 증명해보자.
 
 ## Positive semidefinite kernels
 
@@ -85,8 +109,18 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
   \langle K f, f \rangle \geq 0
   $$
   
-  for all $f$.
+  for all $f$ in the Hilbert space.
 </div>
+
+Matrix에 대한 positive semidefinite의 정의와 유사하다. Matrix의 positive semidefinite은 다음과 같이 정의된다.
+
+영벡터가 아닌 임의의 열벡터 $x$와 대칭 행렬 $A$애 대해 다음이 성립한다면 $A$는 positive semidefinite이다.
+
+$$
+x^{\top}Ax \geq 0
+$$
+
+$\langle Ax, x\rangle \geq 0$와 같이 표현할 수도 있다.
 
 <br>
 
@@ -100,15 +134,19 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
   for all $f \in L^2([0, T]; \mathbb{R})$, we say that the <span style="color: #000000; background-color:#DB4455; font-weight: bold;">kernel $k$ is integrally positive semidefinite</span> and denoted it by $k \succeq 0$.
 </div>
 
+첫 번째 정의는 Hilbert space에서 operator에 대한 정의인 반면, 두 번째 정의는 $L^2$ space에서 kernel에 대한 정의이다. operator의 positive semidefinite을 통해 kernel의 positive semidefinite을 정의한다.
+
 <br>
 
-For continuous kernels, positive semidefiniteness of $k$ is equivalent to the following condition:
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  For continuous kernels, positive semidefiniteness of $k$ is equivalent to the following condition:
 
-$$
-\sum_{i=1}^{n} \sum_{j=1}^n c_i c_j k(t_i, t_j) \geq 0
-$$
+  $$
+  \sum_{i=1}^{n} \sum_{j=1}^n c_i c_j k(t_i, t_j) \geq 0
+  $$
 
-for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given $n \in \mathbb{N}$.
+  for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given $n \in \mathbb{N}$.
+</div>
 
 ## Proposition 1
 
@@ -144,17 +182,19 @@ for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given
 
 이 논문은 first-order methods의 ODE 모델에 대한 수렴률을 분석하는 새로운 프레임워크를 제시한다. (Continuous-time performance estimation problem (continuous PEP)). 이를 설명하기 위해서 accelerated gradient flow를 예로 들자.
 
-Nesterov’s Accelerated Gradient Method에 대한 limiting ODE는 다음과 같다.
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  Nesterov’s Accelerated Gradient Method에 대한 limiting ODE는 다음과 같다. 임의의 함수 $f$에 대해
 
-$$
-\ddot{X} + \dfrac{3}{t} \dot{X} + \nabla f(X) = 0
-$$
+  $$
+  \ddot{X} + \dfrac{3}{t} \dot{X} + \nabla f(X) = 0
+  $$
 
-with initial conditions
+  with initial conditions
 
-$$
-X(0) = x_0, \quad \dot{X}(0) = 0
-$$
+  $$
+  X(0) = x_0, \quad \dot{X}(0) = 0
+  $$
+</div>
 
 <br>
 
@@ -164,9 +204,12 @@ $$
 f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
 $$
 
-우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#fff5b1;">Exact PEP</span>)를 구성한다.
+- $x_0$가 $x^*$에 충분히 가까우면 $f(X(T))$가 $f(x^*)$에 충분히 가깝다.
+- Lyapunov stable의 정의와 유사하지만 임의의 $f$가 있다는 것만 다르다.
 
-<div class="latex-container">
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#fff5b1;">Exact PEP</span>)를 구성한다.
+
   $$
   \begin{align*} & \underset{
     \substack{
@@ -176,9 +219,13 @@ $$
   }{\max} \;\; \dfrac{f(X(T)) - f(x^*)}{\vert\vert x_0 - x^* \vert\vert^2} \\ & \mathrm{subject \; to} \;\;\ddot{X} + \dfrac{1}{t} \dot{X} + \nabla f(X) = 0
   \end{align*}
   $$
+
+  여기서 $\mathcal{F}_0(\mathbb{R}^d; \mathbb{R})$는 the set of continuously differentiable $\mu$-strongly convex functions on $\mathbb{R}^d$로 설정한다.
 </div>
 
-여기서 $\mathcal{F}_0(\mathbb{R}^d; \mathbb{R})$는 the set of continuously differentiable $\mu$-strongly convex functions on $\mathbb{R}^d$.
+함수 $f$가 도입되었기 때문에 위와 같이 최적화 문제로 formulation을 할 수 있는 것이다.
+
+Convex function은 $\mu$-strongly convex function을 포함한다. 0-strongly convex function은 convex function과 일치한다.
 
 Exact PEP의 결과값을 $\rho$로 설정할 수 있기 때문에 Exact PEP를 푸는 것은 유용하다.
 
@@ -194,13 +241,15 @@ $$
 
 <br>
 
-한편 AGM ODE는 다음과 같이 continuous-time dynamical system으로 표현될 수 있다.
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  한편 AGM ODE는 다음과 같이 continuous-time dynamical system으로 표현될 수 있다.
 
-$$
-\dot{X}(t) = - \int_0^t H(t, \tau) \nabla f(X(\tau)) d\tau
-$$
+  $$
+  \dot{X}(t) = - \int_0^t H(t, \tau) \nabla f(X(\tau)) d\tau
+  $$
 
-by setting $H(t, \tau) = \dfrac{r^3}{t^3}$. 여기서 $H(t, \tau)$ is called the H-kernel.
+  by setting $H(t, \tau) = \dfrac{r^3}{t^3}$. 여기서 $H(t, \tau)$ is called the H-kernel.
+</div>
 
 <br>
 
@@ -417,8 +466,16 @@ $$
 \ddot{X} + 3\sqrt{\mu} \cot h_t \dot{X} + 2 \nabla f(X) = 0
 $$
 
-<span style="color: #000000; background-color:#fff5b1;">
+<!-- <span style="color: #000000; background-color:#fff5b1;">
 
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
 
-<div class="latex-container"><div>
+<div class="latex-container"><div> -->
+
+# Q
+
+$$
+f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
+$$
+
+는 어디에서 도출된 걸까?

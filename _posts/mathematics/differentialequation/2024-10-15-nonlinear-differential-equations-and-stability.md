@@ -26,6 +26,7 @@ $$
 $\det \mathbf{A} \neq 0$인 2차원 연립방정식 $\mathbf{x}' = \mathbf{A}\mathbf{x}$에 대해서만 유효하다. 고차원 연립방정식에서 발생하는 상황들은 본질적으로 2차원 연립방정식에서 발생했던 상황들의 조합이다.
 
 ![](./../../../img/differentialequation/type-table.png){: .align-center}
+
 ## [Case 1] 같은 부호의 서로 다른 실수 고윳값
 
 고윳값이 $r_1, r_2$이고, 이에 대응되는 고유벡터가 $\xi_1, \xi_2$라고 하자.
