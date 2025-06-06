@@ -12,8 +12,12 @@ categories:
 
 ## Function spaces
 
-- $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
-- $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: #f9f9f9;">
+  $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+</div>
+
+>- $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$ \
+>- `$C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 
 the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy $\int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty$
 
