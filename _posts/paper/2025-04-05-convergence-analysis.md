@@ -205,8 +205,9 @@ $$
 f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
 $$
 
-- $x_0$가 $x^*$에 충분히 가까우면 $f(X(T))$가 $f(x^*)$에 충분히 가깝다.
-- Lyapunov stable의 정의와 유사하지만 임의의 $f$가 있다는 것만 다르다.
+$x_0$가 $x^*$에 충분히 가까우면 $f(X(T))$가 $f(x^*)$에 충분히 가깝다.
+
+Lyapunov stable의 정의와 유사하지만 임의의 $f$가 있다는 것만 다르다.
 
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
   우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#fff5b1;">Exact PEP</span>)를 구성한다.
@@ -446,7 +447,7 @@ Continuous PEP를 이용해서 각 ODE 모델의 수렴 속도를 분석해보�
 
 ## AGM-SC ODE
 
-ODE of Nestrov's Acceleration Gradient Method for Strongly Convex Objective
+ODE of Nestrov's AGM for strongly convex case
 
 $$
 \ddot{X} + 2\sqrt{\mu} \dot{X} + \nabla f(X) = 0
@@ -482,6 +483,10 @@ $$
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
 
 <div class="latex-container"><div> -->
+
+<br>
+<br>
+<br>
 
 # Q
 
