@@ -13,15 +13,15 @@ categories:
 ## Function spaces
 
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
-  <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">$C([0, T]; \mathbb{R}^d)$</span> : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$C([0, T]; \mathbb{R}^d)$</span> : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
 
   <br>
 
-  <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">$C^1([0, T]; \mathbb{R}^d)$</span> : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
+  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$C^1([0, T]; \mathbb{R}^d)$</span> : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 </div>
 <br>
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-  the space <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">$L^2([0, T]; \mathbb{R}^d)$</span> : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  the space <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$L^2([0, T]; \mathbb{R}^d)$</span> : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
   
   $$
   \int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty
@@ -37,8 +37,8 @@ $$
 
 ## Integral operators
 
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-  An <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">integral operator</span> is a linear operator that maps a function $f$ to another function $K f$ given by
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  An <span style="color: #000000; background-color:#DB4455; font-weight: bold;">integral operator</span> is a linear operator that maps a function $f$ to another function $K f$ given by
 
   $$
   (K f)(t) = \int_0^T k(t, \tau) f(\tau) d\tau
@@ -49,8 +49,8 @@ $$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-  A <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt kernel</span> is an integral kernel $k$ that is square integrable
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  A <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt kernel</span> is an integral kernel $k$ that is square integrable
 
   $$
   k \in L^2([0, T]; \mathbb{R})
@@ -59,8 +59,8 @@ $$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-  <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
 </div>
 
 <br>
@@ -75,8 +75,8 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
 
 ## Positive semidefinite kernels
 
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-  A <span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">symmetric operator $K$ on a Hilbert space is said to be positive semidefinite</span> and denoted by $K \succeq 0$ if
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  A <span style="color: #000000; background-color:#DB4455; font-weight: bold;">symmetric operator $K$ on a Hilbert space is said to be positive semidefinite</span> and denoted by $K \succeq 0$ if
   
   $$
   \langle K f, f \rangle \geq 0
@@ -87,14 +87,14 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
   When a symmetric kernel $k$ is associated with a positive semidefinite operator $K$, i.e.,
 
   $$
   \int_0^T\int_0^T k(t, \tau) f(t) f(\tau) dt d\tau \geq 0
   $$
 
-  for all $f \in L^2([0, T]; \mathbb{R})$, we say that the <span style="color: #2D3748; background-color:#fff5b1;">kernel $k$ is integrally positive semidefinite</span> and denoted it by $k \succeq 0$.
+  for all $f \in L^2([0, T]; \mathbb{R})$, we say that the <span style="color: #000000; background-color:#DB4455; font-weight: bold;">kernel $k$ is integrally positive semidefinite</span> and denoted it by $k \succeq 0$.
 </div>
 
 <br>
@@ -143,7 +143,7 @@ $$
 f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
 $$
 
-우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #2D3748; background-color:#DB4455; font-weight: bold;">Exact PEP</span>)를 구성한다.
+우리는 이 $\rho$를 찾기 위해 다음의 최적화 문제(<span style="color: #000000; background-color:#DB4455; font-weight: bold;">Exact PEP</span>)를 구성한다.
 
 <div class="latex-container">
   $$
@@ -295,3 +295,7 @@ $$
 
 
 background-color: #f9f9f9;
+
+<span style="color: #000000; background-color:#fff5b1;">
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
