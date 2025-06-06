@@ -159,17 +159,54 @@ $$
 
 여기서 $\mathcal{F}_0(\mathbb{R}^d; \mathbb{R})$는 the set of continuously differentiable $\mu$-strongly convex functions on $\mathbb{R}^d$.
 
+Exact PEP의 결과값을 $\rho$로 설정할 수 있기 때문에 Exact PEP를 푸는 것은 유용하다.
+
 ## Relaxed PEP
 
-Exact PEP의 결과값을 $\rho$로 설정할 수 있기 때문에 Exact PEP를 푸는 것은 유용하다. 하지만 최적화 변수인 함수 $f$를 모르기 때문에 Exact PEP는 풀기 어렵다. 따라서 우리는 조건
+하지만 최적화 변수인 임의의 함수 $f$를 모르기 때문에 Exact PEP는 풀기 어렵다. 따라서 우리는 조건
 
 $$
 f \in \mathcal{F}_0(\mathbb{R}^d; \mathbb{R})
 $$
 
-을 충분조건으로 대체함으로써 Exact PEP를 relax된 최적화 문제(Relaxed PEP)를 다룬다.
+을 충분조건인 등식과 부등식으로 대체함으로써 Exact PEP 대신 relax된 최적화 문제(<span style="color: #000000; background-color:#DB4455; font-weight: bold;">Relaxed PEP</span>)를 다룬다.
 
-<div class="latex-container">
+<br>
+
+한편 AGM ODE는 다음과 같이 continuous-time dynamical system으로 표현될 수 있다.
+
+$$
+\dot{X}(t) = - \int_0^t H(t, \tau) \nabla f(X(\tau)) d\tau
+$$
+
+by setting $H(t, \tau) = \dfrac{r^3}{t^3}$. 여기서 $H(t, \tau)$ is called the H-kernel.
+
+<br>
+
+We define $\varphi : [0, T] \rightarrow \mathbb{R}$ and $\gamma : [0, T] \rightarrow \mathbb{R}^d$
+
+$$
+\varphi (t) = \dfrac{1}{\vert\vert x_0 - x^* \vert\vert^2} (f(X(t)) - f(x^*)), \quad \gamma (t) = \dfrac{1}{\vert\vert x_0 - x^* \vert\vert^2} \nabla f(X(t))
+$$
+
+<br>
+
+Using the chain rule and the convexity of $f$, we can derive the following equality and inequality:
+
+$$
+\begin{align*}
+0 &= \dot{\rho}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle, \\
+0 &\geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle
+\end{align*}
+$$
+
+where $v = (x^* - x_0)/\vert\vert x_0 - x^* \vert\vert$. 이는 $f \in \mathcal{F}_0(\mathbb{R}^d; \mathbb{R})$의 충분조건이다.
+
+<br>
+
+따라서 Relatex PEP는 다음과 같다.
+
+<!-- <div class="latex-container"> -->
   $$
   \begin{align*}
   & \underset{ \rho, \gamma, v}{\max} \;\; \dfrac{f(X(t)) - f(x^*)}{\vert\vert x_0 - x^* \vert\vert^2} \\
@@ -178,9 +215,9 @@ $$
   & 0 \geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle \\
   \end{align*}
   $$
-</div>
+<!-- </div> -->
 
-val(Relaxed PEP) $\geq$ val(Exact PEP)
+val(Relaxed PEP) $\geq$ val(Exact PEP) 이므로 $\rho = $ val(Relaxed PEP)로 잡을 때 이는 더 느슨한 upper bound라고 할 수 있다.
 
 ## Lagrangian dual of relaxed PEP
 
