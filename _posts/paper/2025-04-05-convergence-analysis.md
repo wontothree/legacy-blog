@@ -12,7 +12,7 @@ categories:
 
 ## Function spaces
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
   $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
 
   <br>
@@ -20,7 +20,7 @@ categories:
   $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 </div>
 <br>
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
   
   $$
@@ -29,7 +29,7 @@ categories:
 </div>
 <br>
 
-Then <span style="color: #2D3748; background-color:#fff5b1;">$L^2([0, T]; \mathbb{R}^d)$</span> is a Hilbert space equipped with an inner product and a norm
+Then <span style="color: #2D3748; background-color:#A95C68; font-weight: bold;">$L^2([0, T]; \mathbb{R}^d)$</span> is a Hilbert space equipped with an inner product and a norm
 
 $$
 \langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt, \quad \vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
@@ -37,7 +37,7 @@ $$
 
 ## Integral operators
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   An <span style="color: #2D3748; background-color:#fff5b1;">integral operator</span> is a linear operator that maps a function $f$ to another function $K f$ given by
 
   $$
@@ -49,7 +49,7 @@ $$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   A <span style="color: #2D3748; background-color:#fff5b1;">Hilbert-Schmidt kernel</span> is an integral kernel $k$ that is square integrable
 
   $$
@@ -59,13 +59,11 @@ $$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   <span style="color: #2D3748; background-color:#fff5b1;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
 </div>
 
 <br>
-
-When $k$ is a Hilbert-Schmidt kernel, the associated integral operator $K$ is a well-defined operator on $L^2([0, T]; \mathbb{R}^d)$, called a <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt integral operator**</span>.
 
 If a Hilbert-Schmidt kernel k is symmetric, i.e., $k(t, \tau) = k (\tau, t)$ for all $t, \tau \in [0, T]$, then the associated operator is also symmetric in the sense that
 
@@ -77,7 +75,7 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
 
 ## Positive semidefinite kernels
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   A <span style="color: #2D3748; background-color:#fff5b1;">symmetric operator $K$ on a Hilbert space is said to be positive semidefinite</span> and denoted by $K \succeq 0$ if
   
   $$
@@ -89,7 +87,7 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
 
 <br>
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
   When a symmetric kernel $k$ is associated with a positive semidefinite operator $K$, i.e.,
 
   $$
@@ -128,14 +126,16 @@ Basic properties of continuous positive semidefinite kernels:
 Nesterov’s Accelerated Gradient Method에 대한 limiting ODE
 
 $$
-\ddot{X} + \dfrac{1}{t} \dot{X} + \nabla f(X) = 0
+\ddot{X} + \dfrac{3}{t} \dot{X} + \nabla f(X) = 0
 $$
 
 with initial conditions
 
 $$
-X(0) = x_0, \;\;\; \dot{X}(0) = 0
+X(0) = x_0, \quad \dot{X}(0) = 0
 $$
+
+<br>
 
 만약 다음 부등식을 만족하는 $\rho$가 존재한다면 $f$가 $f(x^*)$로 수렴한다. 따라서 우리의 목표는 다음 부등식을 만족하는 $\rho$를 찾는 것이다.
 
