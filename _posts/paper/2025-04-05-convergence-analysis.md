@@ -13,12 +13,11 @@ categories:
 ## Function spaces
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
-  <p>
-    $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
-  </p>
-  <p>
-    $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
-  </p>
+  $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+
+  <br>
+
+  $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 </div>
 <br>
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
@@ -51,7 +50,7 @@ $$
 <br>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
-  A <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt kernel**</span> is an integral kernel $k$ that is square integrable
+  A <span style="color: #2D3748; background-color:#fff5b1;">Hilbert-Schmidt kernel</span> is an integral kernel $k$ that is square integrable
 
   $$
   k \in L^2([0, T]; \mathbb{R})
@@ -61,7 +60,7 @@ $$
 <br>
 
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
-  <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt integral operator**</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
+  <span style="color: #2D3748; background-color:#fff5b1;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
 </div>
 
 <br>
@@ -78,15 +77,29 @@ for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
 
 ## Positive semidefinite kernels
 
-A symmetric operator $K$ on a Hilbert space is said to be positive semidefinite and denoted by $K \succeq 0$ if $\langle K f, f \rangle \geq 0$ for all $f$.
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  A <span style="color: #2D3748; background-color:#fff5b1;">symmetric operator $K$ on a Hilbert space is said to be positive semidefinite</span> and denoted by $K \succeq 0$ if
+  
+  $$
+  \langle K f, f \rangle \geq 0
+  $$
+  
+  for all $f$.
+</div>
 
-When a symmetric kernel $k$ is associated with a positive semidefinite operator $K$, i.e.,
+<br>
 
-$$
-\int_0^T\int_0^T k(t, \tau) f(t) f(\tau) dt d\tau \geq 0
-$$
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  When a symmetric kernel $k$ is associated with a positive semidefinite operator $K$, i.e.,
 
-for all $f \in L^2([0, T]; \mathbb{R})$, we say that the kernel $k$ is integrally positive semidefinite and denoted it by $k \succeq 0$.
+  $$
+  \int_0^T\int_0^T k(t, \tau) f(t) f(\tau) dt d\tau \geq 0
+  $$
+
+  for all $f \in L^2([0, T]; \mathbb{R})$, we say that the <span style="color: #2D3748; background-color:#fff5b1;">kernel $k$ is integrally positive semidefinite</span> and denoted it by $k \succeq 0$.
+</div>
+
+<br>
 
 For continuous kernels, positive semidefiniteness of $k$ is equivalent to the following condition:
 
