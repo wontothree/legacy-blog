@@ -410,9 +410,6 @@ $$
 \ddot{X} + 3\sqrt{\mu} \cot h_t \dot{X} + 2 \nabla f(X) = 0
 $$
 
-
-background-color: #f9f9f9;
-
 <span style="color: #000000; background-color:#fff5b1;">
 
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
