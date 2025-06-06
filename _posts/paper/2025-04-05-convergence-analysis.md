@@ -23,6 +23,7 @@ categories:
 일반적인 stability의 정의에서 모든 t에 대해 다루는 반면 이 논문에서는 전반적으로 유한한 시간 구간까지를 다룬다. 문제를 조금 더 단순화한 것이다.
 
 <br>
+
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
   the space <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$L^2([0, T]; \mathbb{R}^d)$</span> : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
   
@@ -265,8 +266,8 @@ Using the chain rule and the convexity of $f$, we can derive the following equal
 
 $$
 \begin{align*}
-0 &= \dot{\rho}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle, \\
-0 &\geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle
+0 &= \dot{\varphi}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle, \\
+0 &\geq \varphi(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle
 \end{align*}
 $$
 
@@ -274,16 +275,20 @@ where $v = (x^* - x_0)/\vert\vert x_0 - x^* \vert\vert$. 이는 $f \in \mathcal{
 
 <br>
 
-따라서 Relatex PEP는 다음과 같다.
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  따라서 Relatex PEP는 다음과 같다.
 
-$$
-\begin{align*}
-& \underset{ \rho, \gamma, v}{\max} \;\; \dfrac{f(X(t)) - f(x^*)}{\vert\vert x_0 - x^* \vert\vert^2} \\
-& \mathrm{subject \; to} \;\;\; t \in (0, T), \\
-& 0 = \dot{\rho}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle \\
-& 0 \geq \gamma(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle \\
-\end{align*}
-$$
+  $$
+  \begin{align*}
+  & \underset{ \varphi, \gamma, v}{\max} \;\; \varphi (t) \\
+  & \mathrm{subject \; to} \;\;\; t \in (0, T), \\
+  & 0 = \dot{\varphi}(t) + \Big\langle \gamma(t), \int^t_0 H(t, \gamma) \gamma(r) dr \rangle \\
+  & 0 \geq \varphi(t) + \Big\langle \gamma(t), v + \int^t_0 \int^t_\tau H(s, \tau) \gamma(\tau) \; ds \; d\tau \Big\rangle \\
+  \end{align*}
+  $$
+</div>
+
+<br>
 
 val(Relaxed PEP) $\geq$ val(Exact PEP) 이므로 $\rho = $ val(Relaxed PEP)로 잡을 때 이는 더 느슨한 upper bound라고 할 수 있다.
 
@@ -293,57 +298,63 @@ To obtain an upper bound on val(Relaxed PEP), we use Lagrangian duality.
 
 <br>
 
-Let <span style="color: #000000; background-color:#fff5b1;">Lagrange multipliers</span>
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  Let <span style="color: #000000; background-color:#fff5b1;">Lagrange multipliers</span>
 
-$$
-\lambda_1 \in C^1 ([0, T]; \mathbb{R}), \;\;\; \lambda_2 \in C ([0, T]; \mathbb{R}_{\geq 0})
-$$
+  $$
+  \lambda_1 \in C^1 ([0, T]; \mathbb{R}), \;\;\; \lambda_2 \in C ([0, T]; \mathbb{R}_{\geq 0})
+  $$
 
-which are continuous and differentiable to ensure that the dual problem is well-defined.
-
-<br>
-
-Then we define the <span style="color: #000000; background-color:#fff5b1;">Lagrangian function</span> and express in terms of the inner products in function spaces
-
-$$
-\begin{align*}
-\mathcal{L} (\varphi, \gamma, v; \lambda_1, \lambda_2)
-&= \varphi (T) - \int_0^T \lambda_1(t) \left( \dot{\varphi} + \Big\langle \gamma (t), \int_0^t H(t, \tau) \gamma(\tau) d\tau \Big\rangle \right) dt \\
-& \;\;\;\; - \int_0^T \lambda_2(t)\left(\varphi(t) + \Big\langle \gamma(t), v + \int_0^t \int_\tau^t H(s, \tau) \gamma(\tau) ds \; d\tau \Big\rangle \right) dt \\
-&= \varphi (T) - \langle \lambda_1, \dot{\varphi}_{L^2([0, T]; \mathbb{R}^d)} \rangle - \langle \lambda_2(t) v, \gamma(t)\rangle_{L^2([0, T]; \mathbb{R}^d)} \\
-& \;\;\;\; -\dfrac{1}{2} \langle K_{\gamma}, \gamma \rangle_{L^2([0, T]; \mathbb{R}^d)} - \langle \lambda_2(t)v, \gamma(t) \rangle_{L^2([0, T]; \mathbb{R}^d)}
-\end{align*}
-$$
-
-where $K$ is the Hibert-Schmidt integral operator with the symmetric kernel k defined by
-
-$$
-k(t, \gamma) = \lambda_1(t) H(t, \tau) + \lambda_2 \int_{\tau}^t H(s, \tau) ds, \;\;\; t \geq \tau
-$$
+  which are continuous and differentiable to ensure that the dual problem is well-defined.
+</div>
 
 <br>
 
-The <span style="color: #000000; background-color:#fff5b1;">dual function</span> is defined as
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  Then we define the <span style="color: #000000; background-color:#fff5b1;">Lagrangian function</span> and express in terms of the inner products in function spaces
 
-$$
-\begin{align*}
+  $$
+  \begin{align*}
+  \mathcal{L} (\varphi, \gamma, v; \lambda_1, \lambda_2)
+  &= \varphi (T) - \int_0^T \lambda_1(t) \left( \dot{\varphi}(t) + \Big\langle \gamma (t), \int_0^t H(t, \tau) \gamma(\tau) d\tau \Big\rangle \right) dt \\
+  & \;\;\;\; - \int_0^T \lambda_2(t)\left(\varphi(t) + \Big\langle \gamma(t), v + \int_0^t \int_\tau^t H(s, \tau) \gamma(\tau) ds \; d\tau \Big\rangle \right) dt \\
+  &= \varphi (T) - \langle \lambda_1, \dot{\varphi}_{L^2([0, T]; \mathbb{R}^d)} \rangle - \langle \lambda_2(t) v, \gamma(t)\rangle_{L^2([0, T]; \mathbb{R}^d)} \\
+  & \;\;\;\; -\dfrac{1}{2} \langle K_{\gamma}, \gamma \rangle_{L^2([0, T]; \mathbb{R}^d)} - \langle \lambda_2(t)v, \gamma(t) \rangle_{L^2([0, T]; \mathbb{R}^d)}
+  \end{align*}
+  $$
 
-\text{Dual}(\lambda_1, \lambda_2)
-&= \sup_{\varphi, \gamma, v} \mathcal{L}(\varphi, \gamma, v; \lambda_1, \lambda_2) \\
-&=
-\begin{cases}
-\inf_{\nu \in (0, \infty)} [\nu: S_{\lambda_1, \lambda_{2, \nu}} \succeq 0] & \text{if} \quad \lambda_1(0) = 0, \; \lambda_1(T) = 1, \; \dot{\lambda}_1(t) = \lambda_2(t) \\
-\infty & \text{otherwise}
-\end{cases}
+  where $K$ is the Hibert-Schmidt integral operator with the symmetric kernel k defined by
 
-\end{align*}
-$$
+  $$
+  k(t, \gamma) = \lambda_1(t) H(t, \tau) + \lambda_2 \int_{\tau}^t H(s, \tau) ds, \;\;\; t \geq \tau
+  $$
+</div>
 
-where $S_{\lambda_1, \lambda_2, \nu}$ is a symmetric kernel on $[0, T]^2$ (<span style="color: #000000; background-color:#fff5b1;">PEP kernel</span>) given by
+<br>
 
-$$
-S_{\lambda_1, \lambda_2, \nu} (t, \tau) = \nu \left( \lambda_1(t) H(t, \tau) + \lambda_2(t) \int_{\tau}^t H(s, \tau) ds \right) - \dfrac{1}{2} \lambda_2(t) \lambda(\tau), \;\;\; t \geq \tau
-$$
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
+  The <span style="color: #000000; background-color:#fff5b1;">dual function</span> is defined as
+
+  $$
+  \begin{align*}
+
+  \text{Dual}(\lambda_1, \lambda_2)
+  &= \sup_{\varphi, \gamma, v} \mathcal{L}(\varphi, \gamma, v; \lambda_1, \lambda_2) \\
+  &=
+  \begin{cases}
+  \inf_{\nu \in (0, \infty)} [\nu: S_{\lambda_1, \lambda_{2, \nu}} \succeq 0] & \text{if} \quad \lambda_1(0) = 0, \; \lambda_1(T) = 1, \; \dot{\lambda}_1(t) = \lambda_2(t) \\
+  \infty & \text{otherwise}
+  \end{cases}
+
+  \end{align*}
+  $$
+
+  where $S_{\lambda_1, \lambda_2, \nu}$ is a symmetric kernel on $[0, T]^2$ (<span style="color: #000000; background-color:#fff5b1;">PEP kernel</span>) given by
+
+  $$
+  S_{\lambda_1, \lambda_2, \nu} (t, \tau) = \nu \left( \lambda_1(t) H(t, \tau) + \lambda_2(t) \int_{\tau}^t H(s, \tau) ds \right) - \dfrac{1}{2} \lambda_2(t) \lambda(\tau), \;\;\; t \geq \tau
+  $$
+</div>
 
 <br>
 
