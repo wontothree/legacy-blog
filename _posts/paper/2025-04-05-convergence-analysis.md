@@ -109,17 +109,19 @@ for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given
 
 ## Proposition 1
 
-Basic properties of continuous positive semidefinite kernels:
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+  Basic properties of continuous positive semidefinite kernels:
 
-(a) For $\alpha \in C([0, T]; \mathbb{R})$, the kernel $k(t, \tau) = \alpha(t) \alpha(\tau)$ is positive definite.
+  (a) For $\alpha \in C([0, T]; \mathbb{R})$, the kernel $k(t, \tau) = \alpha(t) \alpha(\tau)$ is positive definite.
 
-(b) For $k_1, k_2 \succeq 0$, their product $k(t, \tau) = k_1(t, \tau) k_2(t, \tau)$ is positive definite.
+  (b) For $k_1, k_2 \succeq 0$, their product $k(t, \tau) = k_1(t, \tau) k_2(t, \tau)$ is positive definite.
 
-(c) For $k \succeq 0$, its anti-transpose $(t, \tau) \mapsto k(T - \tau, T - t)$ is also positive semidefinite.
+  (c) For $k \succeq 0$, its anti-transpose $(t, \tau) \mapsto k(T - \tau, T - t)$ is also positive semidefinite.
 
-(d) If $\alpha \in C^1([0, T]; \mathbb{R}_{\geq 0})$ is an increasing function on $[0, T]$, then the symmetric kernel $k$ defined as $k(t, \tau) = \alpha(\tau)$ for $t \leq \tau$ is positive semidefinite.
+  (d) If $\alpha \in C^1([0, T]; \mathbb{R}_{\geq 0})$ is an increasing function on $[0, T]$, then the symmetric kernel $k$ defined as $k(t, \tau) = \alpha(\tau)$ for $t \leq \tau$ is positive semidefinite.
 
-(e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$.
+  (e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$.
+</div>
 
 <br>
 <br>
@@ -268,7 +270,7 @@ $$
 &= \sup_{\varphi, \gamma, v} \mathcal{L}(\varphi, \gamma, v; \lambda_1, \lambda_2) \\
 &=
 \begin{cases}
-\inf_{\nu \in (0, \infty)} [\nu: S_{\lambda_1, \lambda_{2, \nu}} \succeq 0] & \text{if } \lambda_1(0) = 0, \; \lambda_2(T) = 1, \; \dot{\lambda}_1(t) = \lambda_2(t) \\
+\inf_{\nu \in (0, \infty)} [\nu: S_{\lambda_1, \lambda_{2, \nu}} \succeq 0] & \text{if} \quad \lambda_1(0) = 0, \; \lambda_1(T) = 1, \; \dot{\lambda}_1(t) = \lambda_2(t) \\
 \infty & \text{otherwise}
 \end{cases}
 
@@ -331,6 +333,25 @@ $$
   &= \left( \nu - \dfrac{2}{T^2} \right) \dfrac{t \tau}{T^2}
 \end{align*}
 $$
+
+Since the kernel $(t, \tau) \mapsto t\tau$ is nonzero and positive semdidefinite by *Proposition 1*,
+
+$$
+S_{\lambda_1, \lambda_2, \nu}(t, \tau) \succeq 0 \; \Leftrightarrow \; \nu \geq \dfrac{2}{T^2}
+$$
+
+Also since $\lambda_1(0) = 0, \; \lambda_1(T) = 1, \; \dot{\lambda}_1(t) = \lambda_2(t)$,
+
+$$
+\begin{align*}
+  \text{Dual}(\lambda_1, \lambda_2)
+  &= \inf_{\nu \in (0, \infty)} \left[\nu: S_{\lambda_1, \lambda_{2, \nu}} \succeq 0 \right] \\
+  &= \inf_{\nu \in (0, \infty)} \left[\nu: \nu \geq \dfrac{2}{T^2} \right] \\
+  &= \dfrac{2}{T^2}
+\end{align*}
+$$
+
+, which establishes the convergence guarantee with $\rho = \dfrac{2}{T^2}$.
 
 # Example
 
