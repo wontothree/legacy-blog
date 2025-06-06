@@ -12,25 +12,26 @@ categories:
 
 ## Function spaces
 
-<div style="border: 1px solid #ccc; padding: 10px; border-radius: 8px; background-color: #f9f9f9;">
-  $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  <p>
+    $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+  </p>
+  <p>
+    $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
+  </p>
 </div>
+<br>
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  <p>
+    the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy $\int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty$
+  </p>
+</div>
+<br>
 
->- $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$ \
->- `$C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
-
-the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy $\int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty$
-
-Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space, equipped with an inner product and a norm defined by
-
-$$
-\langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt
-$$
-
-and
+Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space equipped with an inner product and a norm
 
 $$
-\vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
+\langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt, \quad \vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
 $$
 
 ## Integral operators
@@ -262,3 +263,6 @@ ODE of the information-theoretic exact method
 $$
 \ddot{X} + 3\sqrt{\mu} \cot h_t \dot{X} + 2 \nabla f(X) = 0
 $$
+
+
+background-color: #f9f9f9;
