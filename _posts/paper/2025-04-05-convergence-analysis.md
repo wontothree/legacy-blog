@@ -22,13 +22,15 @@ categories:
 </div>
 <br>
 <div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
-  <p>
-    the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy $\int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty$
-  </p>
+  the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
+  
+  $$
+  \int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty
+  $$
 </div>
 <br>
 
-Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space equipped with an inner product and a norm
+Then <span style="color: #2D3748; background-color:#fff5b1;">$L^2([0, T]; \mathbb{R}^d)$</span> is a Hilbert space equipped with an inner product and a norm
 
 $$
 \langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt, \quad \vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
@@ -36,21 +38,35 @@ $$
 
 ## Integral operators
 
-An integral operator is a linear operator that maps a function $f$ to another function $K f$ given by
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  An <span style="color: #2D3748; background-color:#fff5b1;">integral operator</span> is a linear operator that maps a function $f$ to another function $K f$ given by
 
-$$
-(K f)(t) = \int_0^T k(t, \tau) f(\tau) d\tau
-$$
+  $$
+  (K f)(t) = \int_0^T k(t, \tau) f(\tau) d\tau
+  $$
 
-where $k: [0, T] \rightarrow \mathbb{R}$ is the associated integral kernel.
+  where $k: [0, T] \rightarrow \mathbb{R}$ is the associated integral kernel.
+</div>
 
-A **Hilbert-Schmidt kernel** is an integral kernel $k$ that is square integrable
+<br>
 
-$$
-k \in L^2([0, T]; \mathbb{R})
-$$
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  A <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt kernel**</span> is an integral kernel $k$ that is square integrable
 
-When $k$ is a **Hilbert-Schmidt kernel**, the associated integral operator $K$ is a well-defined operator on $L^2([0, T]; \mathbb{R}^d)$, called a **Hilbert-Schmidt integral operator.**
+  $$
+  k \in L^2([0, T]; \mathbb{R})
+  $$
+</div>
+
+<br>
+
+<div style="border: 1px solid #ccc; padding: 10px; border-radius: 4px">
+  <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt integral operator**</span> : the associated integral operator $K$ on $L^2([0, T]; \mathbb{R}^d)$ when $k$ is a Hilbert-Schmidt kernel.
+</div>
+
+<br>
+
+When $k$ is a Hilbert-Schmidt kernel, the associated integral operator $K$ is a well-defined operator on $L^2([0, T]; \mathbb{R}^d)$, called a <span style="color: #2D3748; background-color:#fff5b1;">**Hilbert-Schmidt integral operator**</span>.
 
 If a Hilbert-Schmidt kernel k is symmetric, i.e., $k(t, \tau) = k (\tau, t)$ for all $t, \tau \in [0, T]$, then the associated operator is also symmetric in the sense that
 
