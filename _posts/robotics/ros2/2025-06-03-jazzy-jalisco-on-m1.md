@@ -1,5 +1,5 @@
 ---
-title: "[ROS2] Jazzy Jalisco on Apple M1 with Docker"
+title: "[ROS2] Jazzy Jalisco on Apple M1 with Devcontainer and Docker"
 categories: 
   - ros2
 ---
@@ -15,37 +15,20 @@ docker가 존재한다면 문제 없이 버전 정보가 나올 것이다.
 docker version
 ```
 
+# Devcontainer
+
 ```bash
-kevinliam@Kevins-MacBook-Air orb_slam3_ws % docker version
-
-Client:
- Version:           28.0.4
- API version:       1.48
- Go version:        go1.23.7
- Git commit:        b8034c0
- Built:             Tue Mar 25 15:06:09 2025
- OS/Arch:           darwin/arm64
- Context:           desktop-linux
-
-Server: Docker Desktop 4.40.0 (187762)
- Engine:
-  Version:          28.0.4
-  API version:      1.48 (minimum version 1.24)
-  Go version:       go1.23.7
-  Git commit:       6430e49
-  Built:            Tue Mar 25 15:07:18 2025
-  OS/Arch:          linux/arm64
-  Experimental:     false
- containerd:
-  Version:          1.7.26
-  GitCommit:        753481ec61c7c8955a23d6ff7bc8e4daed455734
- runc:
-  Version:          1.2.5
-  GitCommit:        v1.2.5-0-g59923ef
- docker-init:
-  Version:          0.19.0
-  GitCommit:        de40ad0
+mkdir .devcontainer
 ```
+
+  orb_slam3_ws
+  └── .devcontainer/
+      ├── Dockerfile
+      └── devcontainer.json
+
+1. Ctrl + Shift + P
+2. .devcontainer 폴더와 내부 파일 구성
+3. Dev Containers: Rebuild and Reopen in Container
 
 # Docker
 
@@ -78,14 +61,12 @@ jazzy-perception, jazzy-perception-noble⁠
 ```bash
 docker run [options] [image_name]
 
-docker run --platform linux/amd64 -it --rm ros:jazzy-ros-base
+docker run --platform linux/amd64 -it ros:jazzy-ros-base
 ```
 
 *--platform linux/amd64* docker container를 AMD64 architecture (Intel/AMD 기반)로 실행한다. M1 Mac은 ARM64 architecture인데 ROS official docker images은 기본적으로 AMD64용으로 build된다. M1에서 AMD64 image를 돌리기 위해 이 option을 줘야 한다. 그렇지 않으면 M1에서 실행 시 architecture 불일치로 error가 나거나 image가 없다고 뜬다.
 
 *-it* interactive, pseudo-TTY 이 두 옵션은 terminal에서 container 내부 shell에 접속할 수 있게 해준다. 즉, container 안에서 bash 같은 shell을 사용할 수 있다.
-
-*--rm* container가 종료되면 자동으로 삭제하라는 옵션
 
 ```bash
 kevinliam@Kevins-MacBook-Air orb_slam3_ws % docker run --platform linux/amd64 -it --rm ros:jazzy-ros-base

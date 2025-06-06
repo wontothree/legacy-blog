@@ -8,7 +8,88 @@ categories:
 - Lagrangian dual of a related version of continuous-time PEP를 기반으로 만들어졌다.
 - 수렴 속도를 증명하는 작업을 특정 적분 커널의 positive semidefiniteness을 검증하는 문제로 변환한다. (?)
 
-# Continuous-time Performance Estimation Problem
+# Preliminaries: functional analysis
+
+## Function spaces
+
+- $C([0, T]; \mathbb{R}^d)$ : the set of continuous functions from $[0, T]$ to $\mathbb{R}^d$
+- $C^1([0, T]; \mathbb{R}^d)$ : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
+
+the space $L^2([0, T]; \mathbb{R}^d)$ : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy $\int_0^T \vert\vert f(x) \vert\vert_{\mathbb{R}^d}^2 dx < \infty$
+
+Then $L^2([0, T]; \mathbb{R}^d)$ is a Hilbert space, equipped with an inner product and a norm defined by
+
+$$
+\langle f, g \rangle_{L^2([0, T]; \mathbb{R}^d)} = \int_0^T \langle f(t), g(t)\rangle_{\mathbb{R}^d} dt
+$$
+
+and
+
+$$
+\vert\vert f \vert\vert_{L^2([0, T]; \mathbb{R}^d)} = \sqrt{\langle f, f \rangle_{L^2([0, T]; \mathbb{R}^d)}}
+$$
+
+## Integral operators
+
+An integral operator is a linear operator that maps a function $f$ to another function $K f$ given by
+
+$$
+(K f)(t) = \int_0^T k(t, \tau) f(\tau) d\tau
+$$
+
+where $k: [0, T] \rightarrow \mathbb{R}$ is the associated integral kernel.
+
+A **Hilbert-Schmidt kernel** is an integral kernel $k$ that is square integrable
+
+$$
+k \in L^2([0, T]; \mathbb{R})
+$$
+
+When $k$ is a **Hilbert-Schmidt kernel**, the associated integral operator $K$ is a well-defined operator on $L^2([0, T]; \mathbb{R}^d)$, called a **Hilbert-Schmidt integral operator.**
+
+If a Hilbert-Schmidt kernel k is symmetric, i.e., $k(t, \tau) = k (\tau, t)$ for all $t, \tau \in [0, T]$, then the associated operator is also symmetric in the sense that
+
+$$
+\langle Kf, g \rangle = \langle f, K g \rangle
+$$
+
+for all $f, g \in L^2([0, T]; \mathbb{R}^d)$
+
+## Positive semidefinite kernels
+
+A symmetric operator $K$ on a Hilbert space is said to be positive semidefinite and denoted by $K \succeq 0$ if $\langle K f, f \rangle \geq 0$ for all $f$.
+
+When a symmetric kernel $k$ is associated with a positive semidefinite operator $K$, i.e.,
+
+$$
+\int_0^T\int_0^T k(t, \tau) f(t) f(\tau) dt d\tau \geq 0
+$$
+
+for all $f \in L^2([0, T]; \mathbb{R})$, we say that the kernel $k$ is integrally positive semidefinite and denoted it by $k \succeq 0$.
+
+For continuous kernels, positive semidefiniteness of $k$ is equivalent to the following condition:
+
+$$
+\sum_{i=1}^{n} \sum_{j=1}^n c_i c_j k(t_i, t_j) \geq 0
+$$
+
+for any $t_1, \dots, t_n \in [0, T]$ and $c_1, \dots, c_n \in \mathbb{R}$, given $n \in \mathbb{N}$.
+
+## Proposition 1
+
+Basic properties of continuous positive semidefinite kernels:
+
+(a) For $\alpha \in C([0, T]; \mathbb{R})$, the kernel $k(t, \tau) = \alpha(t) \alpha(\tau)$ is positive definite.
+
+(b) For $k_1, k_2 \succeq 0$, their product $k(t, \tau) = k_1(t, \tau) k_2(t, \tau)$ is positive definite.
+
+(c) For $k \succeq 0$, its anti-transpose $(t, \tau) \mapsto k(T - \tau, T - t)$ is also positive semidefinite.
+
+(d) If $\alpha \in C^1([0, T]; \mathbb{R}_{\geq 0})$ is an increasing function on $[0, T]$, then the symmetric kernel $k$ defined as $k(t, \tau) = \alpha(\tau)$ for $t \leq \tau$ is positive semidefinite.
+
+(e) For $k \succeq 0$, we have $k(t, t) \geq 0$ for all $t \in [0, T]$.
+
+# Continuous PEP
 
 Nesterov’s Accelerated Gradient Method에 대한 limiting ODE
 
@@ -44,7 +125,7 @@ $$
 
 여기서 $\mathcal{F}_0(\mathbb{R}^d; \mathbb{R})$는 the set of continuously differentiable $\mu$-strongly convex functions on $\mathbb{R}^d$.
 
-## Relaxation of PEP
+## Relaxed PEP
 
 Exact PEP의 결과값을 $\rho$로 설정할 수 있기 때문에 Exact PEP를 푸는 것은 유용하다. 하지만 최적화 변수인 함수 $f$를 모르기 때문에 Exact PEP는 풀기 어렵다. 따라서 우리는 조건
 
