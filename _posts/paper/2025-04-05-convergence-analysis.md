@@ -19,6 +19,9 @@ categories:
 
   <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$C^1([0, T]; \mathbb{R}^d)$</span> : the set of continuously differentiable functions from $[0, T]$ to $\mathbb{R}^d$
 </div>
+
+정의역을 모든
+
 <br>
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
   the space <span style="color: #000000; background-color:#DB4455; font-weight: bold;">$L^2([0, T]; \mathbb{R}^d)$</span> : the set of all measurable functions $f : [0, T] \rightarrow \mathbb{R}^d$ that satisfy
@@ -362,6 +365,10 @@ $$
 $$
 
 , which establishes the convergence guarantee with $\rho = \dfrac{2}{T^2}$.
+
+<br>
+<br>
+<br>
 
 # Example
 

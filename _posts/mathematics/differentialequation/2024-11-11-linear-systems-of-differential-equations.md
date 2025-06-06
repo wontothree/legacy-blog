@@ -555,7 +555,3 @@ $$
 $$
 e^{\mathbf{A}t} = \mathbf{v} e^{\mathbf{D}t}\mathbf{v}^{-1}
 $$
-
-## Sol 3
-
-## Sol 4
