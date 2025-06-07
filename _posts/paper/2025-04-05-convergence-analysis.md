@@ -76,15 +76,11 @@ $$
   $$
   k \in L^2([0, T]; \mathbb{R})
   $$
+
+  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ when $k$ is a Hilbert-Schmidt kernel.
 </div>
 
 $L^2$ space라는 것 자체가 특별하기 때문에 이름이 붙은 것이다.
-
-<br>
-
-<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
-  <span style="color: #000000; background-color:#DB4455; font-weight: bold;">Hilbert-Schmidt integral operator</span> : the associated integral operator $K$ when $k$ is a Hilbert-Schmidt kernel.
-</div>
 
 <br>
 
