@@ -60,3 +60,5 @@ sidebar-category:
         url: /tmp        
       - title: "ROS2"
         url: /ros2
+      - title: "MATH for Paper"
+        url: /mathforpaper

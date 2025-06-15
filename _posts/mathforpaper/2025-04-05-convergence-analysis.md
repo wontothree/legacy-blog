@@ -1,7 +1,7 @@
 ---
-title: "[OPT for ML] Convergence Analysis of ODE Models for Accelerated First-Order Methods"
+title: "Convergence Analysis of ODE Models for Accelerated First-Order Methods"
 categories:
-  - paper
+  - mathforpaper
 ---
 - novel methodology that systematically analyzes ODE models for first-roder optimization methods
 - establish convergence rates of various accelerated gradient flow models.
