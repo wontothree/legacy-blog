@@ -22,17 +22,10 @@ author: Anthony
     <div class="initial-content">
       {{ content }}
 
-      <!-- Math content with scroll -->
+      <!-- Math content with scroll
       <div class="latex-container">
-        <!-- $$ 
-        \begin{align}
-        a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = a + b + c + d + e + f + g + h + i + j + k + l + m + n + o + p + q + r + s + t + u + v + w + x + y + z = \\
-        \sum_{i=1}^{n} i^2 + \frac{1}{\sqrt{2\pi}} e^{-x^2/2} + \int_{a}^{b} f(x)\,dx + \text{some\ long\ text\ to\ trigger\ scrolling}
-        \end{align}
-        $$ -->
-      </div>
-      <!-- End of Math content -->
 
+      </div> -->
     </div>
 
     {% if site.search == true %}
@@ -49,6 +42,21 @@ author: Anthony
     </div>
 
     {% include scripts.html %}
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('p').forEach(p => {
+        const text = p.textContent.trim();
+        if (text.startsWith("$$") && text.endsWith("$$")) {
+          const div = document.createElement("div");
+          div.className = "latex-container";
+          div.innerHTML = p.innerHTML;
+          p.replaceWith(div);
+        }
+      });
+    });
+    </script>
+
 
   </body>
 </html>

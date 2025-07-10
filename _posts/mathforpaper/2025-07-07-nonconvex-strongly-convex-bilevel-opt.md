@@ -109,6 +109,27 @@ Kwon proposed the Fully First-order Bilevel Approximation
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
 
+$$
+\begin{align*}
+  & \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \;\; \mathcal{L}_{\lambda}^*(x)
+  =
+  & \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \;\; \left[ f(x, y) + \lambda \left( g(x, y) - \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \;\; g(x, z) \right) \right]
+\end{align*}
+$$
+
 # 5. Finding Second-Order Stationarity
 
 # Memo
