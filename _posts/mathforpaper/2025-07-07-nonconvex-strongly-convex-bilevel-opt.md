@@ -47,7 +47,7 @@ $$
 g(x, y) - g^*(x) \leq 0
 $$
 
-where $g^*(x) = g(x, y^*(x))$.
+where $g^*(x) = g(x, y^*(x))$
 
 ## Relaxation by Lagrangian
 
@@ -121,7 +121,20 @@ $$
 <br>
 <br>
 
-# Solver `F2BA`
+# Solver F^2BA
+
+```
+z_0 = y_0
+for t = 0, 1, ... , T-1
+    y^0_t = y_t,  z^0_t = z_t
+    for k = 0, 1, ... , K-1
+        z^{k+1}_t = z^k_t - \alpha \nabla_y g(x_t, z^k_t)
+        y^{k+1}_t = y^k_t - \tau (\nabla_y f(x_t, y^k_t) + \lambda \nabla_y g(x_t, y^k_t))
+    end for
+    \tilde{\nabla} \mathcal{L}^*_{\lambda} (x_t) = \nabla_x f(x_t, y^K_t) + \lambda (\nabla_x g(x_t, y^K_t) - \nabla_x g(x_t, z^K_t))
+    x_{t+1} = x_t - \eta \tilde{\nabla} \mathcal{L}^*_\lambda(x_t)
+end for
+```
 
 <br>
 <br>
@@ -206,6 +219,17 @@ $$
 $$
 </div>
 
+<br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+(f) If $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is $L$-smooth then, for all $x, y \in \mathbb{R}^d$,
+
+$$
+f(y) \leq f(x) + \langle \nabla f(x), \;y - x\rangle + \dfrac{L}{2} \vert\vert y - x \vert\vert^2
+$$
+</div>
+
 ## Result
 
 알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
@@ -248,6 +272,14 @@ $$
 \vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert^2 = \mathcal{O}(R)
 $$
 
+Now it suffices to show that the algorithm can find an $epsilon$-first-roder stationary of $\mathcal{L}^*_{\lambda}(x)$
+
+Consider the following update of gradient descent
+
+$$
+x_{t+1} = x_t - \eta \nabla \hat{\mathcal{L}^*_{\lambda}}(x_t)
+$$
+
 <br>
 <br>
 <br>
@@ -287,7 +319,9 @@ $$
 
 Kwon proposed the Fully First-order Bilevel Approximation
 
----
+<br>
+<br>
+<br>
 
 # Reference
 
