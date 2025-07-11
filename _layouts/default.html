@@ -43,7 +43,7 @@ author: Anthony
 
     {% include scripts.html %}
 
-    <script>
+    <!-- <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('p').forEach(p => {
         const text = p.textContent.trim();
@@ -55,8 +55,20 @@ author: Anthony
         }
       });
     });
+    </script> -->
+
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll('p, div, span').forEach(el => {
+        const text = el.textContent.trim();
+        if (text.startsWith('$$') && text.endsWith('$$')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'latex-container';
+          wrapper.innerHTML = el.innerHTML;
+          el.replaceWith(wrapper);
+        }
+      });
+    });
     </script>
-
-
   </body>
 </html>

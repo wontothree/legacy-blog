@@ -8,7 +8,11 @@
     │   └── navigation.yml
     │
     ├── _includes
+    │   └── mathjax_support.html
+    │
     ├── _layouts
+    │   └── default.html
+    │
     ├── _pages
     ├── _posts
     ├── _sass
