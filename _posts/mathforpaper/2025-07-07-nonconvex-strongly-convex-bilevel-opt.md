@@ -117,7 +117,19 @@ $$
 \end{align*}
 $$
 
+<br>
+<br>
+<br>
+
+# Solver `F2BA`
+
+<br>
+<br>
+<br>
+
 # 중요한 정리
+
+F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
 
 ## Assumption
 
@@ -236,6 +248,10 @@ $$
 \vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert^2 = \mathcal{O}(R)
 $$
 
+<br>
+<br>
+<br>
+
 # Memo
 
 일반적인 경우라면 g가 mu strongly convex이어야 할텐데 여기서처럼 proxy를 사용할테 mu strongly convex이어야 해?
@@ -273,8 +289,6 @@ Kwon proposed the Fully First-order Bilevel Approximation
 
 ---
 
-Finding First-Order Stationarity
-
-F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
-
 # Reference
+
+- [Near-Optimal Nonconvex-Strongly-Convex Bilevel Optimization with Fully First-Order Oracles](https://arxiv.org/pdf/2306.14853)
