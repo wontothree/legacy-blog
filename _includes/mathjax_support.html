@@ -1,4 +1,4 @@
-<script type="text/x-mathjax-config">
+<!-- <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     TeX: {
         equationNumbers: {
@@ -31,4 +31,56 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error",function (message) {
         margin: 10px 0;
         background-color: #fff;
     }
+</style> -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    TeX: {
+        equationNumbers: {
+            autoNumber: "AMS"
+        }
+    },
+    tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        processEscapes: true
+    }
+});
+MathJax.Hub.Register.MessageHook("Math Processing Error", function (message) {
+    alert("Math Processing Error: " + message[1]);
+});
+MathJax.Hub.Register.MessageHook("TeX Jax - parse error", function (message) {
+    alert("Math Processing Error: " + message[1]);
+});
+</script>
+
+<script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<script type="text/javascript">
+MathJax.Hub.Queue(() => {
+    document.querySelectorAll('script[type^="math/tex"]').forEach(el => {
+        if (el.type.includes("mode=display")) {
+            const container = document.createElement("div");
+            container.className = "latex-container";
+
+            const mjSpan = el.nextElementSibling;
+            if (mjSpan && mjSpan.className.includes("MathJax_Display")) {
+                el.parentNode.insertBefore(container, mjSpan);
+                container.appendChild(mjSpan);
+            }
+        }
+    });
+});
+</script>
+
+<style>
+.latex-container {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #fff;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff;
+}
 </style>

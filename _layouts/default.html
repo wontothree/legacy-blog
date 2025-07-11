@@ -43,7 +43,7 @@ author: Anthony
 
     {% include scripts.html %}
 
-    <!-- <script>
+    <script>
     document.addEventListener("DOMContentLoaded", () => {
       document.querySelectorAll('p, div, span').forEach(el => {
         const text = el.textContent.trim();
@@ -55,29 +55,6 @@ author: Anthony
         }
       });
     });
-    </script> -->
-
-    <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      // MathJax가 렌더링한 블록 수식 요소를 찾음
-      const mathElements = document.querySelectorAll('script[type^="math/tex"]');
-
-      mathElements.forEach(el => {
-        if (el.type.includes("mode=display")) {
-          const container = document.createElement("div");
-          container.className = "latex-container";
-
-          // 렌더링 이후에 MathJax가 이 <script> 뒤에 display 수식을 삽입하므로,
-          // 다음 형제 요소를 감싸야 함
-          const mjSpan = el.nextElementSibling;
-          if (mjSpan && mjSpan.className.includes("MathJax_Display")) {
-            el.parentNode.insertBefore(container, mjSpan);
-            container.appendChild(mjSpan);
-          }
-        }
-      });
-    });
     </script>
-
   </body>
 </html>
