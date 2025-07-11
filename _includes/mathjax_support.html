@@ -59,18 +59,14 @@ MathJax.Hub.Register.MessageHook("TeX Jax - parse error", function (message) {
 
 <script type="text/javascript">
 MathJax.Hub.Queue(() => {
-    document.querySelectorAll('script[type^="math/tex"]').forEach(el => {
-        if (el.type.includes("mode=display")) {
-            const container = document.createElement("div");
-            container.className = "latex-container";
-
-            const mjSpan = el.nextElementSibling;
-            if (mjSpan && mjSpan.className.includes("MathJax_Display")) {
-                el.parentNode.insertBefore(container, mjSpan);
-                container.appendChild(mjSpan);
-            }
-        }
-    });
+  document.querySelectorAll('.MathJax_Display').forEach(el => {
+    if (!el.parentNode.classList.contains('latex-container')) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'latex-container';
+      el.parentNode.insertBefore(wrapper, el);
+      wrapper.appendChild(el);
+    }
+  });
 });
 </script>
 
