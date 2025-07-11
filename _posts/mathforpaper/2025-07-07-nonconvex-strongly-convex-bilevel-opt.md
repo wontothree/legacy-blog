@@ -134,13 +134,61 @@ $$
 ## Notation
 
 $$
-\Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \; \varphi (x) \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
+\Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \varphi (x), \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
 $$
 
 ## Setting Parameters
 
 $$
-\
+\eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
+$$
+
+## 사용되는 정리
+
+a. $\vert\vert \nabla \mathcal{L}_{\lambda}^*(x) - \nabla \varphi (x) \vert\vert = \mathcal{O} (l \kappa^3 / \lambda), \quad \forall x \in \mathbb{R}^dx$ \
+b. $\vert \mathcal{L}_{\lambda}^*(x) - \varphi (x) \vert = \mathcal{O} (l \kappa^2 / \lambda), \quad \forall x \in \mathbb{R}^dx$ \
+c. $\mathcal{L}_{\lambda}^*(x)$ is $\mathcal{O} (l \kappa^3)$-gradient Lipschiz \
+d. For $\lambda \geq 2L_f / \mu, \quad \vert\vert y^*_\lambda(x) - y^*(x) \vert\vert \leq \dfrac{C_f}{\lambda \mu}$\
+e. Suppose $h(x): \mathbb{R}^d \rightarrow \mathbb{R}$ is $\beta$-gradient Lipschitz and $\alpha$-strongly convex. Consider the following update of gradient descent
+
+$$
+x_{t+1} = x_t - \dfrac{1}{\beta} \nabla h(x_t)
+$$
+
+Let $x^* = \underset{\substack{x \in \mathbb{R}^d}}{\arg\min} \;\; h(x)$. Then
+
+$$
+\vert\vert x_{t+1} -x^* \vert\vert^2 \leq \left( 1 - \dfrac{\alpha}{\beta} \right) \vert\vert x_t - x^* \vert\vert^2
+$$
+
+## Result
+
+알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
+
+$$
+T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
+$$
+
+안에 찾을 수 있다. 여기서
+
+$$
+l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
+$$
+
+## Proof
+
+Let $L$ be the gradient Lipschitz coefficient of $\mathcal{L}_{\lambda}^*(x)$.
+
+By (a), (b), (c),
+
+a'. $\underset{\substack{x \in \mathbb{R}^dx}}{\sup} \vert\vert \nabla \mathcal{L}_{\lambda(x)}^* - \nabla \varphi(x) \vert\vert = \mathcal{O}(\epsilon)$ \
+b'. $\mathcal{L}_{\lambda}^*(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \mathcal{L}_{\lambda}^*(x) = \mathcal{O}(\Delta)$ \
+c'. $L := \underset{\substack{x \in \mathbb{R}^dx}}{\sup} \vert\vert \nabla \mathcal{L}_{\lambda(x)}^* \vert\vert = \mathcal{O}(l \kappa^3)$
+
+By (d),
+
+$$
+\vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert = \mathcal{O}(R)
 $$
 
 # Memo
