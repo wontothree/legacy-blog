@@ -1,9 +1,11 @@
 ---
-title: "Solving Nonconvex-Strongly-Convex Bilevel Optimization"
+title: "Solving Diterministic Nonconvex-Strongly-Convex Bilevel Optimization"
 categories:
   - mathforpaper
 ---
-Bilevel optimization problem
+# Formulating Problem
+
+## Original deterministic bilevel optimization problem
 
 $$
 \begin{align*}
@@ -28,17 +30,7 @@ $$
 \end{align*}
 $$
 
-When the lower-level problem is strongly convex in $y$,
-
-$$
-\begin{align*}
-  \nabla \varphi(x)
-  &= \nabla_x f(x, y^*(x)) + \nabla y^*(x) \nabla_y f(x, y^*(x)) \\
-  &= \nabla_x f(x, y^*(x)) - \nabla_{xy}^2 g(x, y^*(x)) [ \nabla_{yy}^2 g(x, y^*(x))]^{-1} \nabla_y f(x, y^*(x))
-\end{align*}
-$$
-
-Kwon proposed a novel first-order algorithm that can find an $\epsilon$-first-roder stationary point of $\varphi$ (x) without resorting to second-order information.
+## Relaxation
 
 $$
 \begin{align*} & \underset{
@@ -55,12 +47,18 @@ $$
 g(x, y) - g^*(x) \leq 0
 $$
 
-# Conclusion
+where $g^*(x) = g(x, y^*(x))$.
 
-$\mathcal{L}_{\lambda}(x, y) := f(x, y) + \lambda (g(x, y) - g^*(x))$
+## Relaxation by Lagrangian
+
+Define
 
 $$
-\mathcal{L}_{\lambda}^*(x) := \mathcal{L}_{\lambda} (x, y_{\lambda}^*(x))
+\begin{align*}
+\mathcal{L}_{\lambda}(x, y) &:= f(x, y) + \lambda (g(x, y) - g^*(x)) \\
+
+\mathcal{L}_{\lambda}^*(x) &:= \mathcal{L}_{\lambda} (x, y_{\lambda}^*(x))
+\end{align*}
 $$
 
 where
@@ -82,36 +80,36 @@ $$
 \vert\vert \nabla \mathcal{L}_{\lambda}^*(x) - \nabla \varphi (x) \vert\vert = \mathcal{O} (\kappa^3 / \lambda)
 $$
 
-The advantage of this reduction is that $\nabla \mathcal{L}_{\lambda}^*(x)$ can be evaluated with only first-order information of $f$ and $g$
+Therefore
 
 $$
 \begin{align*}
-  \nabla \mathcal{L}_{\lambda}^*(x)
-  &= \nabla_x \mathcal{L}_{\lambda}^*(x, y^*(x)) + \nabla y_{\lambda}^*(x) \nabla_y \mathcal{L}_{\lambda}^*(x, y^*(x)) \\
-  &= \nabla_x f(x, y^*(x)) - \lambda (\nabla_x g(x, y_{\lambda}^*(x)) - \nabla_x g(x, y^*(x)))
-\end{align*}
-$$
-
-Kwon proposed the Fully First-order Bilevel Approximation
-
-# 4. Finding First-Order Stationarity
-
-F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
-
-$$
-\begin{align*}
-  & \underset{
+  \underset{
   \substack{
     x \in \mathbb{R}^{d}x
   }
   }{\min} \;\; \mathcal{L}_{\lambda}^*(x)
-  =
-  & \underset{
+  &=
+  \underset{
   \substack{
     x \in \mathbb{R}^{d}x,
     y \in \mathbb{R}^{d}y
   }
-  }{\min} \;\; \left[ f(x, y) + \lambda \left( g(x, y) - \underset{
+  }{\min} \mathcal{L}_\lambda(x, y) \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - g^*(x) \right) \right] \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - \underset{
   \substack{
     z \in \mathbb{R}^{d}x
   }
@@ -244,3 +242,39 @@ $$
 
 1. 이 세팅에서 강한 볼록성을 줄 수 있을까?
 2. 강한 볼록성이 없는 경우 현실적인 다른 relaxation을 할 수는 없을까?
+
+# Temp
+
+When the lower-level problem is strongly convex in $y$,
+
+$$
+\begin{align*}
+  \nabla \varphi(x)
+  &= \nabla_x f(x, y^*(x)) + \nabla y^*(x) \nabla_y f(x, y^*(x)) \\
+  &= \nabla_x f(x, y^*(x)) - \nabla_{xy}^2 g(x, y^*(x)) [ \nabla_{yy}^2 g(x, y^*(x))]^{-1} \nabla_y f(x, y^*(x))
+\end{align*}
+$$
+
+Kwon proposed a novel first-order algorithm that can find an $\epsilon$-first-roder stationary point of $\varphi$ (x) without resorting to second-order information.
+
+---
+
+The advantage of this reduction is that $\nabla \mathcal{L}_{\lambda}^*(x)$ can be evaluated with only first-order information of $f$ and $g$
+
+$$
+\begin{align*}
+  \nabla \mathcal{L}_{\lambda}^*(x)
+  &= \nabla_x \mathcal{L}_{\lambda}^*(x, y^*(x)) + \nabla y_{\lambda}^*(x) \nabla_y \mathcal{L}_{\lambda}^*(x, y^*(x)) \\
+  &= \nabla_x f(x, y^*(x)) - \lambda (\nabla_x g(x, y_{\lambda}^*(x)) - \nabla_x g(x, y^*(x)))
+\end{align*}
+$$
+
+Kwon proposed the Fully First-order Bilevel Approximation
+
+---
+
+Finding First-Order Stationarity
+
+F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
+
+# Reference
