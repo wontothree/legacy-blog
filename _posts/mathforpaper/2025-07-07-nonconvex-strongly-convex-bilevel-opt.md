@@ -1,5 +1,5 @@
 ---
-title: "Near-Optimal Nonconvex-Strongly-Convex Bilevel Optimization with Fully First-Order Oracles"
+title: "Solving Nonconvex-Strongly-Convex Bilevel Optimization"
 categories:
   - mathforpaper
 ---
@@ -23,7 +23,7 @@ $$
   \substack{
     y \in \mathbb{R}^dy
   }
-}{\argmin} \;\; g(x, y)
+}{\arg\min} \;\; g(x, y)
 \end{align*}
 $$
 
@@ -71,7 +71,7 @@ $$
   \substack{
     y \in \mathbb{R}^dy
   }
-}{\argmin} \;\; \mathcal{L}_{\lambda}(x, y)
+}{\arg\min} \;\; \mathcal{L}_{\lambda}(x, y)
 \end{align*}
 $$
 
