@@ -6,7 +6,8 @@ categories:
 Bilevel optimization problem
 
 $$
-\begin{align*} & \underset{
+\begin{align*}
+  & \underset{
   \substack{
     x \in \mathbb{R}
   }
@@ -93,18 +94,6 @@ $$
 
 Kwon proposed the Fully First-order Bilevel Approximation
 
-# 3. Preliminaries
-
-## Assumption
-
-1. $g(x, y)$ is $\mu$-strongly convex in $y$
-2. $g(x, y)$ is $L_g$-gradient Lipschitz
-3. $g(x, y)$ is $\rho_g$-Hessian Lipschiz
-4. $f(x, y)$ is $C_f$-Lipschitz in $y$
-5. $f(x, y)$ is $L_f$-gradient Lipschitz
-6. $f(x, y)$ is two-times continuous differentiable
-7. $\varphi(x)$ is lower bounded, i.. $\inf_{x \in \mathbb{R}^dx} \varphi(x) > -\infty$
-
 # 4. Finding First-Order Stationarity
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
@@ -130,7 +119,29 @@ $$
 \end{align*}
 $$
 
-# 5. Finding Second-Order Stationarity
+# 중요한 정리
+
+## Assumption
+
+1. $g(x, y)$ is $\mu$-strongly convex in $y$
+2. $g(x, y)$ is $L_g$-gradient Lipschitz
+3. $g(x, y)$ is $\rho_g$-Hessian Lipschiz
+4. $f(x, y)$ is $C_f$-Lipschitz in $y$
+5. $f(x, y)$ is $L_f$-gradient Lipschitz
+6. $f(x, y)$ is two-times continuous differentiable
+7. $\varphi(x)$ is lower bounded,  $\inf_{x \in \mathbb{R}^dx} \varphi(x) > -\infty$
+
+## Notation
+
+$$
+\Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \; \varphi (x) \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
+$$
+
+## Setting Parameters
+
+$$
+\
+$$
 
 # Memo
 
