@@ -17,7 +17,7 @@ $$
 \end{align*}
 $$
 
-where
+where the lower-level problem is
 
 $$
 \begin{align*}
@@ -31,6 +31,8 @@ $$
 $$
 
 ## Relaxation
+
+하위 최적화 문제를 상위 최적화 문제의 제약조건으로 바꾼다.
 
 $$
 \begin{align*} & \underset{
@@ -47,18 +49,63 @@ $$
 g(x, y) - g^*(x) \leq 0
 $$
 
-where $g^*(x) = g(x, y^*(x))$
+where
+
+$$
+g^*(x) = g(x, y^*(x)) = \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \; g(x, z)
+$$
+
+이때 표기상 x, y를 동시에 최적화하는 것처럼 보일 수 있으나 알고리즘상에서 y에 대해 먼저 최적화하고 x를 최적화한다.
 
 ## Relaxation by Lagrangian
 
-Define
+라그랑지안 함수를 다음과 같이 정의한다. 여기서 $\lambda > 0$는 페널티(라그랑지 승수) 파라미터이다.
+
+$$
+\mathcal{L}_{\lambda}(x, y) := f(x, y) + \lambda (g(x, y) - g^*(x))
+$$
+
+Thus
 
 $$
 \begin{align*}
-\mathcal{L}_{\lambda}(x, y) &:= f(x, y) + \lambda (g(x, y) - g^*(x)) \\
-
-\mathcal{L}_{\lambda}^*(x) &:= \mathcal{L}_{\lambda} (x, y_{\lambda}^*(x))
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \mathcal{L}_\lambda(x, y)
+  &:=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - g^*(x) \right) \right] \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x,
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \;\; g(x, z) \right) \right]
 \end{align*}
+$$
+
+## 최종 목표 문제
+
+Define the surrogate single-level objective function
+
+$$
+\mathcal{L}_{\lambda}^*(x) := \mathcal{L}_{\lambda} (x, y_{\lambda}^*(x))
 $$
 
 where
@@ -89,20 +136,14 @@ $$
     x \in \mathbb{R}^{d}x
   }
   }{\min} \;\; \mathcal{L}_{\lambda}^*(x)
-  &=
+  &:=
   \underset{
   \substack{
     x \in \mathbb{R}^{d}x,
     y \in \mathbb{R}^{d}y
   }
-  }{\min} \mathcal{L}_\lambda(x, y) \\
-  &=
-  \underset{
-  \substack{
-    x \in \mathbb{R}^{d}x,
-    y \in \mathbb{R}^{d}y
-  }
-  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - g^*(x) \right) \right] \\
+  }{\min}
+  \;\mathcal{L}_\lambda(x, y) \\
   &=
   \underset{
   \substack{
@@ -113,7 +154,7 @@ $$
   \substack{
     z \in \mathbb{R}^{d}x
   }
-  }{\min} \;\; g(x, z) \right) \right]
+  }{\min} \; g(x, z) \right) \right]
 \end{align*}
 $$
 
@@ -123,18 +164,95 @@ $$
 
 # Solver F^2BA
 
-```
-z_0 = y_0
-for t = 0, 1, ... , T-1
-    y^0_t = y_t,  z^0_t = z_t
-    for k = 0, 1, ... , K-1
-        z^{k+1}_t = z^k_t - \alpha \nabla_y g(x_t, z^k_t)
-        y^{k+1}_t = y^k_t - \tau (\nabla_y f(x_t, y^k_t) + \lambda \nabla_y g(x_t, y^k_t))
-    end for
-    \tilde{\nabla} \mathcal{L}^*_{\lambda} (x_t) = \nabla_x f(x_t, y^K_t) + \lambda (\nabla_x g(x_t, y^K_t) - \nabla_x g(x_t, z^K_t))
-    x_{t+1} = x_t - \eta \tilde{\nabla} \mathcal{L}^*_\lambda(x_t)
-end for
-```
+알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
+
+<div class="latex-container">
+$$
+\begin{align*}
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \;\; \mathcal{L}_{\lambda}^*(x)
+  &:=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \;
+  \underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min}
+  \;\mathcal{L}_\lambda(x, y) \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \;
+  \underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left[ f(x, y) + \lambda \left( g(x, y) - \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \; g(x, z) \right) \right] \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \left[ \;
+  \underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left( f(x, y) + \lambda g(x, y) \right) - \lambda \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \; g(x, z) \right] \\
+  &=
+  \underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\min} \underbrace{\left[ \;
+  \left( f\left(x, \; \underbrace{\underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\arg\min} \left( f(x, y) + \lambda g(x, y) \right)}_{(6)}\right) + \lambda \; g\left(x, \; \underbrace{\underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\arg\min} \left( f(x, y) + \lambda g(x, y) \right)}_{(6)} \right) \right) - \lambda \underbrace{g\left(x, \;\underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\arg\min} \; g(x, z)\right)}_{(5)} \right]}_{(8), (9)} \\
+\end{align*}
+$$
+</div>
+
+$$
+\begin{aligned}
+\text{(1)}\quad & z_0 = y_0 \\
+\text{(2)}\quad & \textbf{for } t = 0, 1, \dots, T{-}1 \textbf{ do} \\
+\text{(3)}\quad & \quad y_t^0 = y_t,\quad z_t^0 = z_t \\
+\text{(4)}\quad & \quad \textbf{for } k = 0, 1, \dots, K{-}1 \textbf{ do} \\
+\text{(5)}\quad & \quad\quad z_t^{k+1} = z_t^k - \alpha \nabla_y g(x_t, z_t^k) \\
+\text{(6)}\quad & \quad\quad y_t^{k+1} = y_t^k - \tau \left( \nabla_y f(x_t, y_t^k) + \lambda \nabla_y g(x_t, y_t^k) \right) \\
+\text{(7)}\quad & \quad \textbf{end for} \\
+\text{(8)}\quad & \quad \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) = \nabla_x f(x_t, y_t^K) + \lambda \left( \nabla_x g(x_t, y_t^K) - \nabla_x g(x_t, z_t^K) \right) \\
+\text{(9)}\quad & \quad x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \\
+\text{(10)}\quad & \textbf{end for}
+\end{aligned}
+$$
 
 <br>
 <br>
