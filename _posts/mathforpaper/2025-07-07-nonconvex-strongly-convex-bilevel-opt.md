@@ -183,7 +183,7 @@ $$
 
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<!-- <div class="latex-container"> -->
+<div class="latex-container">
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-<!-- </div> -->
+</div>
 
 <br>
 <br>
