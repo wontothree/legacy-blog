@@ -216,12 +216,30 @@ $$
     z \in \mathbb{R}^{d}x
   }
   }{\min} \; g(x, z) \right] \\
-  &=
+
+  &= \mathcal{L}^*_{\lambda}\left(
   \underset{
   \substack{
     x \in \mathbb{R}^{d}x
   }
-  }{\min} \underbrace{\left[ \;
+  }{\arg\min} \left[ \;
+  \underset{
+  \substack{
+    y \in \mathbb{R}^{d}y
+  }
+  }{\min} \left( f(x, y) + \lambda g(x, y) \right) - \lambda \underset{
+  \substack{
+    z \in \mathbb{R}^{d}x
+  }
+  }{\min} \; g(x, z) \right]\right) \\
+
+  &=
+  \mathcal{L}^*_{\lambda} \left(
+  \underbrace{\underset{
+  \substack{
+    x \in \mathbb{R}^{d}x
+  }
+  }{\arg\min} \left[ \;
   \left( f\left(x, \; \underbrace{\underset{
   \substack{
     y \in \mathbb{R}^{d}y
@@ -230,11 +248,11 @@ $$
   \substack{
     y \in \mathbb{R}^{d}y
   }
-  }{\arg\min} \left( f(x, y) + \lambda g(x, y) \right)}_{(6)} \right) \right) - \lambda \underbrace{g\left(x, \;\underset{
+  }{\arg\min} \left( f(x, y) + \lambda g(x, y) \right)}_{(6)} \right) \right) - \lambda g\left(x, \;\underbrace{\underset{
   \substack{
     z \in \mathbb{R}^{d}x
   }
-  }{\arg\min} \; g(x, z)\right)}_{(5)} \right]}_{(8), (9)} \\
+  }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
 </div>
