@@ -54,8 +54,8 @@ sidebar-category:
     children:
       - title: "Paper"
         url: /paper
-      - title: "F1tenth"
-        url: /f1tenth_ 
+      - title: "Project"
+        url: /project 
       - title: "Tmp"
         url: /tmp        
       - title: "ROS2"

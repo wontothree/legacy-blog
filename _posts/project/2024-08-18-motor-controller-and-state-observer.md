@@ -1,7 +1,7 @@
 ---
 title: "[Cart Pole] Motor Controller and State Observer"
 categories:
-  - tmp
+  - project
 ---
 ![](../../../img/cartpole/cartpole-block-diagram.png){: .align-center }
 

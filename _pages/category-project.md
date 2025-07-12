@@ -1,10 +1,10 @@
 ---
-title: "F1tenth"
+title: "Project"
 layout: archive
-permalink: /f1tenth_
+permalink: /project
 sidebar:
     nav: "sidebar-category"
 ---
 
-{% assign posts = site.categories.f1tenth_ %}
+{% assign posts = site.categories.project %}
 {% for post in posts %} {% include archive-single.html type=page.entries_layout %} {% endfor %}
