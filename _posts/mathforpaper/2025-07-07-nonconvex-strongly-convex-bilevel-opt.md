@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-% <!-- </div> -->
+</div>
 
 <br>
 <br>
