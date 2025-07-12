@@ -164,9 +164,26 @@ $$
 
 # Solver F^2BA
 
+알고리즘은 다음과 같다.
+
+$$
+\begin{aligned}
+\text{(1)}\quad & z_0 = y_0 \\
+\text{(2)}\quad & \textbf{for } t = 0, 1, \dots, T{-}1 \textbf{ do} \\
+\text{(3)}\quad & \quad y_t^0 = y_t,\quad z_t^0 = z_t \\
+\text{(4)}\quad & \quad \textbf{for } k = 0, 1, \dots, K{-}1 \textbf{ do} \\
+\text{(5)}\quad & \quad\quad z_t^{k+1} = z_t^k - \alpha \nabla_y g(x_t, z_t^k) \\
+\text{(6)}\quad & \quad\quad y_t^{k+1} = y_t^k - \tau \left( \nabla_y f(x_t, y_t^k) + \lambda \nabla_y g(x_t, y_t^k) \right) \\
+\text{(7)}\quad & \quad \textbf{end for} \\
+\text{(8)}\quad & \quad \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) = \nabla_x f(x_t, y_t^K) + \lambda \left( \nabla_x g(x_t, y_t^K) - \nabla_x g(x_t, z_t^K) \right) \\
+\text{(9)}\quad & \quad x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \\
+\text{(10)}\quad & \textbf{end for}
+\end{aligned}
+$$
+
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -255,22 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-</div>
-
-$$
-\begin{aligned}
-\text{(1)}\quad & z_0 = y_0 \\
-\text{(2)}\quad & \textbf{for } t = 0, 1, \dots, T{-}1 \textbf{ do} \\
-\text{(3)}\quad & \quad y_t^0 = y_t,\quad z_t^0 = z_t \\
-\text{(4)}\quad & \quad \textbf{for } k = 0, 1, \dots, K{-}1 \textbf{ do} \\
-\text{(5)}\quad & \quad\quad z_t^{k+1} = z_t^k - \alpha \nabla_y g(x_t, z_t^k) \\
-\text{(6)}\quad & \quad\quad y_t^{k+1} = y_t^k - \tau \left( \nabla_y f(x_t, y_t^k) + \lambda \nabla_y g(x_t, y_t^k) \right) \\
-\text{(7)}\quad & \quad \textbf{end for} \\
-\text{(8)}\quad & \quad \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) = \nabla_x f(x_t, y_t^K) + \lambda \left( \nabla_x g(x_t, y_t^K) - \nabla_x g(x_t, z_t^K) \right) \\
-\text{(9)}\quad & \quad x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \\
-\text{(10)}\quad & \textbf{end for}
-\end{aligned}
-$$
+<!-- </div> -->
 
 <br>
 <br>
@@ -430,17 +432,48 @@ By (f) and (1),
 
 $$
 \begin{aligned}
-\mathcal{L}^*_{\lambda}(x_{t+1})
-&\leq
-\mathcal{L}^*_{\lambda}(x_{t}) + \langle \nabla \mathcal{L}^*_{\lambda}(x_{t}), \; x_{t+1} - x_t \rangle + \dfrac{L}{2} \| x_{t+1} - x_t \|^2 \\
-&=
-\mathcal{L}^*_{\lambda}(x_{t}) + \langle \nabla \mathcal{L}^*_{\lambda}(x_{t}), \; - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \rangle + \dfrac{L}{2} \| - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \|^2 \\
-&=
-\mathcal{L}^*_\lambda(x_t) 
+\mathcal{L}^*_\lambda(x_{t+1}) 
+&\leq \mathcal{L}^*_\lambda(x_t) 
++ \langle \nabla \mathcal{L}^*_\lambda(x_t), x_{t+1} - x_t \rangle
++ \frac{L}{2} \|x_{t+1} - x_t\|^2 \\
+&= \mathcal{L}^*_\lambda(x_t) 
++ \langle \nabla \mathcal{L}^*_\lambda(x_t), -\eta \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
++ \frac{L}{2} \|-\eta \hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&= \mathcal{L}^*_\lambda(x_t) 
 - \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
-+ \dfrac{ L \eta^2}{2} \| \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \|^2 \\
-&= \mathcal{L}^*_{\lambda}(x_t) - \eta \|\nabla \mathcal{L}^*_{\lambda}(x_t)\|^2 - \eta \left\langle \nabla \mathcal{L}^*_{\lambda}(x_t), \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \right\rangle + \frac{L \eta^2}{2} \| \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \|^2 \\
++ \frac{L \eta^2}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&= \mathcal{L}^*_\lambda(x_t) 
+- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t) \rangle 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\| \cdot \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\| 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \frac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \frac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&= \mathcal{L}^*_\lambda(x_t) 
+- \frac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+&= \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \left( \dfrac{\eta}{2} - \frac{\eta^2L}{2} \right) \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2
 \end{aligned}
+$$
+
+마지막 줄이 어떻게 도출되지...?
+
+By (e),
+
+$$
+\vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 \leq \exp\left( -\dfrac{\mu K}{4L_g}\right) \leq \exp\left( -\dfrac{\mu K}{4L_g}\right) \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2
+\\
+\vert\vert z^K_t - y^*(x_t) \vert\vert^2 \leq \exp\left( -\dfrac{\mu K}{L_g}\right) \vert\vert z^0_t - y^* (x_t) \vert\vert^2
 $$
 
 <br>
