@@ -100,7 +100,7 @@ $$
 \end{align*}
 $$
 
-## 최종 목표 문제
+## 최종
 
 Define the surrogate single-level objective function
 
@@ -183,7 +183,7 @@ $$
 
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-</div>
+<!-- </div> -->
 
 <br>
 <br>
@@ -471,10 +471,22 @@ $$
 By (e),
 
 $$
-\vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 \leq \exp\left( -\dfrac{\mu K}{4L_g}\right) \leq \exp\left( -\dfrac{\mu K}{4L_g}\right) \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2
-\\
-\vert\vert z^K_t - y^*(x_t) \vert\vert^2 \leq \exp\left( -\dfrac{\mu K}{L_g}\right) \vert\vert z^0_t - y^* (x_t) \vert\vert^2
+\begin{align*}
+\vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2
+&\leq \left(1 - \dfrac{\mu}{L_g}\right)^K \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 \\
+&\leq \left(1 -\dfrac{\mu}{4L_g}\right)^K \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 \\
+&\leq \exp\left(-\dfrac{\mu K}{4L_g}\right) \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2, \\ \\
+\vert\vert z^K_t - y^*(x_t) \vert\vert^2
+&\leq \exp\left( -\dfrac{\mu K}{L_g}\right) \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \\
+&\leq \exp\left( -\dfrac{\mu K}{4L_g}\right) \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \\
+\end{align*}
 $$
+
+$$
+\vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + \vert\vert z^K_t - y^*(x_t) \vert\vert^2 \leq \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+$$
+
+포기...
 
 <br>
 <br>
@@ -487,8 +499,102 @@ $$
 1. 이 세팅에서 강한 볼록성을 줄 수 있을까?
 2. 강한 볼록성이 없는 경우 현실적인 다른 relaxation을 할 수는 없을까?
 
-# Temp
+<br>
+<br>
+<br>
 
+# Exercise
+
+## Exercise 1
+
+$$
+\begin{align*}
+\underset{
+\substack{
+  x \in \mathbb{R}
+}
+}{\min} \; f(x, y^*(x))
+\end{align*}
+$$
+
+where the lower-level problem is
+
+$$
+\begin{align*}
+  y^*(x) = \;
+  & \underset{
+  \substack{
+    y \in \mathbb{R}^dy
+  }
+}{\arg\min} \;\; g(x, y)
+\end{align*}
+$$
+
+여기서 만약 $f(x, y) = - g(x, y)$ 이라면?
+
+$$
+\begin{align*}
+y^*(x)
+&=
+\underset{
+\substack{
+  y \in \mathbb{R}^dy
+}
+}{\arg\min} \; g(x, y) \\
+&=
+\underset{
+\substack{
+  y \in \mathbb{R}^dy
+}
+}{\arg\min} \; -f(x, y) \\
+&=
+\underset{
+\substack{
+  y \in \mathbb{R}^dy
+}
+}{\arg\max} \; f(x, y) \\
+\end{align*}
+$$
+
+이므로
+
+$$
+\begin{align*}
+\underset{
+\substack{
+  x \in \mathbb{R}
+}
+}{\min} \; f(x, y^*(x))
+&=
+\underset{
+\substack{
+  x \in \mathbb{R}
+}
+}{\min} \; f(x,
+\underset{
+\substack{
+  y \in \mathbb{R}^dy
+}
+}{\arg\max} \; f(x, y)
+) \\
+&=
+\underset{
+\substack{
+  x \in \mathbb{R}
+}
+}{\min} \;
+\underset{
+\substack{
+  y \in \mathbb{R}
+}
+}{\max}
+\; f(x, y)
+\end{align*}
+$$
+
+## Exercise 2
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
 When the lower-level problem is strongly convex in $y$,
 
 $$
@@ -498,22 +604,29 @@ $$
   &= \nabla_x f(x, y^*(x)) - \nabla_{xy}^2 g(x, y^*(x)) [ \nabla_{yy}^2 g(x, y^*(x))]^{-1} \nabla_y f(x, y^*(x))
 \end{align*}
 $$
+</div>
 
-Kwon proposed a novel first-order algorithm that can find an $\epsilon$-first-roder stationary point of $\varphi$ (x) without resorting to second-order information.
+<br>
 
----
+*Proof.*
 
-The advantage of this reduction is that $\nabla \mathcal{L}_{\lambda}^*(x)$ can be evaluated with only first-order information of $f$ and $g$
+g에 대한 first order optimality condition에 의해
 
 $$
-\begin{align*}
-  \nabla \mathcal{L}_{\lambda}^*(x)
-  &= \nabla_x \mathcal{L}_{\lambda}^*(x, y^*(x)) + \nabla y_{\lambda}^*(x) \nabla_y \mathcal{L}_{\lambda}^*(x, y^*(x)) \\
-  &= \nabla_x f(x, y^*(x)) - \lambda (\nabla_x g(x, y_{\lambda}^*(x)) - \nabla_x g(x, y^*(x)))
-\end{align*}
+\begin{aligned}
+0
+&= \nabla_y g(x, y^*(x)) \\
+&= \nabla^2_{xy} g(x, y^*(x)) + \nabla^2_{yy} g(x, y^*(x)) \cdot \nabla y^*(x)
+\end{aligned}
 $$
 
-Kwon proposed the Fully First-order Bilevel Approximation
+에서
+
+$$
+\nabla y^*(x) = - [\nabla^2_{yy} g(x, y^*(x))]^{-1} \nabla^2_{xy} g(x, y^*(x))
+$$
+
+g가 strongly convex해야 $[\nabla^2_{yy} g(x, y^*(x))]$의 역행렬이 존재한다.
 
 <br>
 <br>
