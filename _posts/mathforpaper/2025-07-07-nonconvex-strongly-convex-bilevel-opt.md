@@ -166,7 +166,7 @@ $$
 
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -255,7 +255,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-</div>
+<!-- </div> -->
 
 $$
 \begin{aligned}
@@ -408,12 +408,39 @@ $$
 \vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert^2 = \mathcal{O}(R)
 $$
 
-Now it suffices to show that the algorithm can find an $epsilon$-first-roder stationary of $\mathcal{L}^*_{\lambda}(x)$
+Now it suffices to show that the algorithm can find an $\epsilon$-first-roder stationary of $\mathcal{L}^*_{\lambda}(x)$
 
 Consider the following update of gradient descent
 
 $$
-x_{t+1} = x_t - \eta \nabla \hat{\mathcal{L}^*_{\lambda}}(x_t)
+x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
+$$
+
+즉,
+
+$$
+\begin{align}
+x_{t+1} - x_t = - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
+\end{align}
+$$
+
+우리는 $\mathcal{L}^*_{\lambda}(x_t)$가 $L$-smooth하다는 것을 보일 수 있다.
+
+By (f) and (1),
+
+$$
+\begin{aligned}
+\mathcal{L}^*_{\lambda}(x_{t+1})
+&\leq
+\mathcal{L}^*_{\lambda}(x_{t}) + \langle \nabla \mathcal{L}^*_{\lambda}(x_{t}), \; x_{t+1} - x_t \rangle + \dfrac{L}{2} \| x_{t+1} - x_t \|^2 \\
+&=
+\mathcal{L}^*_{\lambda}(x_{t}) + \langle \nabla \mathcal{L}^*_{\lambda}(x_{t}), \; - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \rangle + \dfrac{L}{2} \| - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \|^2 \\
+&=
+\mathcal{L}^*_\lambda(x_t) 
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
++ \dfrac{ L \eta^2}{2} \| \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \|^2 \\
+&= \mathcal{L}^*_{\lambda}(x_t) - \eta \|\nabla \mathcal{L}^*_{\lambda}(x_t)\|^2 - \eta \left\langle \nabla \mathcal{L}^*_{\lambda}(x_t), \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \right\rangle + \frac{L \eta^2}{2} \| \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) \|^2 \\
+\end{aligned}
 $$
 
 <br>
