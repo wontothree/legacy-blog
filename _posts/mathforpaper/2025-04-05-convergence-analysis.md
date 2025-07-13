@@ -1,7 +1,7 @@
 ---
 title: "Convergence Analysis of ODE Models for Accelerated First-Order Methods"
 categories:
-  - mathforpaper
+  - paper
 ---
 - novel methodology that systematically analyzes ODE models for first-roder optimization methods
 - establish convergence rates of various accelerated gradient flow models.
@@ -424,71 +424,8 @@ $$
 
 , which establishes the convergence guarantee with $\rho = \dfrac{2}{T^2}$.
 
-<br>
-<br>
-<br>
-
-# Example
-
-## Reparametrization
-
-지금까지는 $\mu = 0$ 인 non-strongly convex 함수에 대해 제안된 방법을 적용해왔지만, 아래와 같은 재매개변수화 기법을 통해
-
-$$
-\hat{f}(x) := f(x) - \dfrac{\mu}{2} \vert\vert x - x_0 \vert\vert^2
-$$
-
-μ-strongly convex 함수에도 동일한 방법을 적용할 수 있다.
-
-Continuous PEP를 이용해서 각 ODE 모델의 수렴 속도를 분석해보자.
-
-## AGM-SC ODE
-
-ODE of Nestrov's AGM for strongly convex case
-
-$$
-\ddot{X} + 2\sqrt{\mu} \dot{X} + \nabla f(X) = 0
-$$
-
-## Unified AGM ODE
-
-ODE unifying AGM ODE and AGM-SC ODE
-
-$$
-\ddot{X} + \dfrac{\sqrt{\mu}}{2} (\tan h_t + 3\cot h_t) \dot{X} + \nabla f(X) = 0
-$$
-
-## TMM ODE
-
-ODE of triple momentum method
-
-$$
-\ddot{X} + 3\sqrt{\mu} \dot{X} + 2 \nabla f(X) = 0
-
-$$
-
-## ITEM ODE
-
-ODE of the information-theoretic exact method
-
-$$
-\ddot{X} + 3\sqrt{\mu} \cot h_t \dot{X} + 2 \nabla f(X) = 0
-$$
-
 <!-- <span style="color: #000000; background-color:#fff5b1;">
 
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
 
 <div class="latex-container"><div> -->
-
-<br>
-<br>
-<br>
-
-# Q
-
-$$
-f(X(T)) - f(x^*) \leq \rho \vert\vert x_0 - x^* \vert\vert^2
-$$
-
-는 어디에서 도출된 걸까?
