@@ -1,5 +1,5 @@
 ---
-title: "Solving Diterministic Nonconvex-Strongly-Convex Bilevel Optimization"
+title: "[OPT] Solving Diterministic Nonconvex-Strongly-Convex Bilevel Optimization"
 categories:
   - paper
 ---
@@ -183,7 +183,7 @@ $$
 
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-</div>
+<!-- </div> -->
 
 <br>
 <br>
@@ -281,6 +281,8 @@ $$
 # 중요한 정리
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
+
+<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
 
 ## Assumption
 
@@ -303,6 +305,21 @@ $$
 $$
 \eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
 $$
+
+## Result
+
+알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
+
+$$
+T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
+$$
+
+안에 찾을 수 있다. 여기서
+
+$$
+l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
+$$
+</div>
 
 ## 사용되는 정리
 
@@ -367,20 +384,6 @@ $$
 f(y) \leq f(x) + \langle \nabla f(x), \;y - x\rangle + \dfrac{L}{2} \vert\vert y - x \vert\vert^2
 $$
 </div>
-
-## Result
-
-알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
-
-$$
-T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
-$$
-
-안에 찾을 수 있다. 여기서
-
-$$
-l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
-$$
 
 ## Proof
 

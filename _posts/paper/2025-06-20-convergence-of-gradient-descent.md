@@ -1,5 +1,5 @@
 ---
-title: "Converence of Gradient Descent"
+title: "[OPT] Converence of Gradient Descent"
 categories:
   - paper
 ---
