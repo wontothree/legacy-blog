@@ -183,7 +183,7 @@ $$
 
 알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-% <!-- </div> -->
+<!-- </div> -->
 
 <br>
 <br>
@@ -284,29 +284,29 @@ F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-
 
 <div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
 
-**Assumption**
+**Assumption** \
 
-1. $g(x, y)$ is $\mu$-strongly convex in $y$
-2. $g(x, y)$ is $L_g$-gradient Lipschitz
-3. $g(x, y)$ is $\rho_g$-Hessian Lipschiz
-4. $f(x, y)$ is $C_f$-Lipschitz in $y$
-5. $f(x, y)$ is $L_f$-gradient Lipschitz
-6. $f(x, y)$ is two-times continuous differentiable
-7. $\varphi(x)$ is lower bounded,  $\inf_{x \in \mathbb{R}^dx} \varphi(x) > -\infty$
+1. $g(x, y)$ is $\mu$-strongly convex in $y$ \
+2. $g(x, y)$ is $L_g$-gradient Lipschitz \
+3. $g(x, y)$ is $\rho_g$-Hessian Lipschiz \
+4. $f(x, y)$ is $C_f$-Lipschitz in $y$ \
+5. $f(x, y)$ is $L_f$-gradient Lipschitz \
+6. $f(x, y)$ is two-times continuous differentiable \
+7. $\varphi(x)$ is lower bounded,  $\inf_{x \in \mathbb{R}^dx} \varphi(x) > -\infty$ \
 
-**Notation**
+**Notation** \
 
 $$
 \Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \varphi (x), \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
 $$
 
-**Setting Parameters**
+**Setting Parameters** \
 
 $$
 \eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
 $$
 
-**Result**
+**Result** \
 
 알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
 
