@@ -520,7 +520,7 @@ $$
 \end{align*}
 $$
 
-다음 부등식이 주어졌다고 가정하자.
+On the other side, the following inequality is given
 
 $$
 \begin{aligned}
