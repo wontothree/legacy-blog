@@ -522,11 +522,13 @@ $$
 
 다음 부등식이 주어졌다고 가정하자.
 
+$$
 \begin{aligned}
 \vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert
 
 &\leq 2\lambda L_g \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert + \lambda L_g \vert\vert z^K_t - y^*(x_t) \vert\vert
 \end{aligned}
+$$
 
 Taking square and deploy, therefore, 
 
