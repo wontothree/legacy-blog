@@ -278,7 +278,7 @@ $$
 <br>
 <br>
 
-# 중요한 정리
+# Proof of convergence in F^2BA
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
 
@@ -433,7 +433,7 @@ $$
 
 우리는 $\mathcal{L}^*_{\lambda}(x_t)$가 $L$-smooth하다는 것을 보일 수 있다.
 
-By (f) and (1),
+Let $\eta \leq 1/(2L)$, and then by (f) and (1),
 
 $$
 \begin{aligned}
@@ -487,12 +487,24 @@ $$
 
 &= \mathcal{L}^*_\lambda(x_t) 
 - \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-- \left( \dfrac{\eta}{2} - \frac{\eta^2L}{2} \right) \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 
+- \left( \dfrac{\eta}{2} - \frac{\eta^2L}{2} \right) \vert\vert \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \vert\vert^2 
 + \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+&= \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \left( \dfrac{\eta}{2} - \frac{\eta^2L}{2} \right) \left\| \dfrac{x_{t+1} - x_t}{-\eta} \right\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
 \end{aligned}
 $$
-
-마지막 줄이 어떻게 도출되지...?
 
 By (e),
 
@@ -508,11 +520,33 @@ $$
 \end{align*}
 $$
 
-$$
-\vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + \vert\vert z^K_t - y^*(x_t) \vert\vert^2 \leq \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
-$$
+다음 부등식이 주어졌다고 가정하자.
 
-포기...
+\begin{aligned}
+\vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert
+
+&\leq 2\lambda L_g \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert + \lambda L_g \vert\vert z^K_t - y^*(x_t) \vert\vert
+\end{aligned}
+
+Taking square and deploy, therefore, 
+
+$$
+\begin{aligned}
+\vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert^2
+
+&\leq \left( 2\lambda L_g \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert + \lambda L_g \vert\vert z^K_t - y^*(x_t) \vert\vert \right)^2
+\\
+
+&\leq 8 \lambda^2 L_g^2 \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + 2 \lambda^2 L_g^2 \vert\vert z^K_t - y^*(x_t) \vert\vert^2
+\\
+
+&\approx 4 \lambda^2 L_g^2 \left( \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + \vert\vert z^K_t - y^*(x_t) \vert\vert^2 \right)
+\\
+
+&\leq 4 \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+
+\end{aligned}
+$$
 
 <br>
 <br>
