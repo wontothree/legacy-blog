@@ -438,32 +438,53 @@ By (f) and (1),
 $$
 \begin{aligned}
 \mathcal{L}^*_\lambda(x_{t+1}) 
+
 &\leq \mathcal{L}^*_\lambda(x_t) 
 + \langle \nabla \mathcal{L}^*_\lambda(x_t), x_{t+1} - x_t \rangle
-+ \frac{L}{2} \|x_{t+1} - x_t\|^2 \\
++ \frac{L}{2} \|x_{t+1} - x_t\|^2
+\\
+
 &= \mathcal{L}^*_\lambda(x_t) 
 + \langle \nabla \mathcal{L}^*_\lambda(x_t), -\eta \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
-+ \frac{L}{2} \|-\eta \hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
++ \frac{L}{2} \|-\eta \hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
 &= \mathcal{L}^*_\lambda(x_t) 
 - \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
-+ \frac{L \eta^2}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
++ \frac{\eta^2 L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+&= \mathcal{L}^*_\lambda(x_t) 
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \nabla \mathcal{L}^*_\lambda(x_t) \rangle
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t) \rangle 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
 &= \mathcal{L}^*_\lambda(x_t) 
 - \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
 - \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t) \rangle 
-+ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
-&\leq \mathcal{L}^*_\lambda(x_t) 
-- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\| \cdot \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\| 
-+ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
-&\leq \mathcal{L}^*_\lambda(x_t) 
-- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \frac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \frac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
 &= \mathcal{L}^*_\lambda(x_t) 
-- \frac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2 
-+ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 \\
+- \eta \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
++ \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \nabla \mathcal{L}^*_\lambda(x_t) \rangle 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+&= \mathcal{L}^*_\lambda(x_t) 
+- \eta \langle \nabla \mathcal{L}^*_\lambda(x_t), \hat{\nabla} \mathcal{L}^*_\lambda(x_t) \rangle 
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+&= \mathcal{L}^*_\lambda(x_t) 
+- \left( \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2 \right)
++ \frac{\eta^2L}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
 &= \mathcal{L}^*_\lambda(x_t) 
 - \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
 - \left( \dfrac{\eta}{2} - \frac{\eta^2L}{2} \right) \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t)\|^2 
