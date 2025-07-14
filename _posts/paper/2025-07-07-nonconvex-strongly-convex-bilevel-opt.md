@@ -59,11 +59,11 @@ g^*(x) = g(x, y^*(x)) = \underset{
   }{\min} \; g(x, z)
 $$
 
-이때 표기상 x, y를 동시에 최적화하는 것처럼 보일 수 있으나 알고리즘상에서 y에 대해 먼저 최적화하고 x를 최적화한다.
+We optimize the problem in y firstly and in x in secondly.
 
 ## Relaxation by Lagrangian
 
-라그랑지안 함수를 다음과 같이 정의한다. 여기서 $\lambda > 0$는 페널티(라그랑지 승수) 파라미터이다.
+We define lagrangian function. $\lambda > 0$ is a penalty parameter.
 
 $$
 \mathcal{L}_{\lambda}(x, y) := f(x, y) + \lambda (g(x, y) - g^*(x))
@@ -164,7 +164,7 @@ $$
 
 # Solver F^2BA
 
-알고리즘은 다음과 같다.
+Algorithm of F^2BA is followed by
 
 $$
 \begin{aligned}
@@ -181,7 +181,7 @@ $$
 \end{aligned}
 $$
 
-알고리즘을 더 명확하게 이해하기 위해 식을 전개해보자.
+The following expansion make the algorithm readable
 
 <div class="latex-container">
 $$
@@ -308,13 +308,13 @@ $$
 \eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
 $$
 
-알고리즘 F^2BA은 $\varphi(x)$의 $\epsilon$-first-order stationary point를
+F^2BA find $\epsilon$-first-order stationary point of $\varphi(x)$ in
 
 $$
 T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
 $$
 
-안에 찾을 수 있다. Where
+Where
 
 $$
 l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
@@ -322,70 +322,6 @@ $$
 </div>
 
 <br>
-
-## 사용되는 정리
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px"> (a)
-
-  $$
-  \vert\vert \nabla \mathcal{L}_{\lambda}^*(x) - \nabla \varphi (x) \vert\vert = \mathcal{O} (l \kappa^3 / \lambda), \quad \forall x \in \mathbb{R}^dx
-  $$
-</div>
-
-<br>
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px"> (b)
-
-$$
-\vert \mathcal{L}_{\lambda}^*(x) - \varphi (x) \vert = \mathcal{O} (l \kappa^2 / \lambda), \quad \forall x \in \mathbb{R}^dx
-$$
-</div>
-
-<br>
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-
-  (c) $\mathcal{L}_{\lambda}^*(x)$ is $\mathcal{O} (l \kappa^3)$-gradient Lipschiz
-</div>
-
-<br>
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-
-  (d) For $\lambda \geq 2L_f / \mu,$
-  
-  $$
-  \quad \vert\vert y^*_\lambda(x) - y^*(x) \vert\vert \leq \dfrac{C_f}{\lambda \mu}
-  $$
-</div>
-
-<br>
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-
-(e) Suppose $h(x): \mathbb{R}^d \rightarrow \mathbb{R}$ is $\beta$-gradient Lipschitz and $\alpha$-strongly convex. Consider the following update of gradient descent
-
-$$
-x_{t+1} = x_t - \dfrac{1}{\beta} \nabla h(x_t)
-$$
-
-Let $x^* = \underset{\substack{x \in \mathbb{R}^d}}{\arg\min} \;\; h(x)$. Then
-
-$$
-\vert\vert x_{t+1} -x^* \vert\vert^2 \leq \left( 1 - \dfrac{\alpha}{\beta} \right) \vert\vert x_t - x^* \vert\vert^2
-$$
-</div>
-
-<br>
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-
-(f) If $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is $L$-smooth then, for all $x, y \in \mathbb{R}^d$,
-
-$$
-f(y) \leq f(x) + \langle \nabla f(x), \;y - x\rangle + \dfrac{L}{2} \vert\vert y - x \vert\vert^2
-$$
-</div>
 
 ## Proof
 
@@ -506,6 +442,16 @@ $$
 \end{aligned}
 $$
 
+On the other side, the following inequality is given
+
+$$
+\begin{aligned}
+\vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert
+
+&\leq 2\lambda L_g \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert + \lambda L_g \vert\vert z^K_t - y^*(x_t) \vert\vert
+\end{aligned}
+$$
+
 By (e),
 
 $$
@@ -520,16 +466,6 @@ $$
 \end{align*}
 $$
 
-On the other side, the following inequality is given
-
-$$
-\begin{aligned}
-\vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert
-
-&\leq 2\lambda L_g \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert + \lambda L_g \vert\vert z^K_t - y^*(x_t) \vert\vert
-\end{aligned}
-$$
-
 Taking square and deploy, therefore, 
 
 $$
@@ -542,17 +478,104 @@ $$
 &\leq 8 \lambda^2 L_g^2 \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + 2 \lambda^2 L_g^2 \vert\vert z^K_t - y^*(x_t) \vert\vert^2
 \\
 
-&\approx 4 \lambda^2 L_g^2 \left( \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + \vert\vert z^K_t - y^*(x_t) \vert\vert^2 \right)
+&\leq 8 \lambda^2 L_g^2 \left( \vert\vert y^K_t - y^*_{\lambda}(x_t) \vert\vert^2 + \vert\vert z^K_t - y^*(x_t) \vert\vert^2 \right)
 \\
 
-&\leq 4 \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+&\leq 8 \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+\\
 
 \end{aligned}
 $$
 
+On the other hand,
+
+$$
+\begin{aligned}
+\vert\vert y^0_{t+1} - y^*_{\lambda} (x_{t+1}) \vert\vert^2
+
+&= \vert\vert y^0_{t+1} - y^*_\lambda(x_t) + y^*_{\lambda}(x_t) - y^*_\lambda(x_{t+1}) \vert\vert^2
+\\
+
+&\leq  2 \vert\vert y^0_{t+1} - y^*_\lambda(x_t) \vert\vert^2 + 2 \vert\vert y^*_{\lambda}(x_t) - y^*_\lambda(x_{t+1}) \vert\vert^2
+\\
+
+&=  2 \vert\vert y^K_t - y^*_\lambda(x_t) \vert\vert^2 + 2 \vert\vert y^*_\lambda(x_{t+1}) - y^*_{\lambda}(x_t) \vert\vert^2
+\\
+
+&\leq 2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2
++ \dfrac{32L_g^2}{\mu^2} \vert\vert x_{t+1} - x_t \vert\vert^2
+\\
+
+\end{aligned}
+$$
+
+<br><br><br>
+
+## Appendix Theorems
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px"> (a)
+
+  $$
+  \vert\vert \nabla \mathcal{L}_{\lambda}^*(x) - \nabla \varphi (x) \vert\vert = \mathcal{O} (l \kappa^3 / \lambda), \quad \forall x \in \mathbb{R}^dx
+  $$
+</div>
+
 <br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px"> (b)
+
+$$
+\vert \mathcal{L}_{\lambda}^*(x) - \varphi (x) \vert = \mathcal{O} (l \kappa^2 / \lambda), \quad \forall x \in \mathbb{R}^dx
+$$
+</div>
+
 <br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+  (c) $\mathcal{L}_{\lambda}^*(x)$ is $\mathcal{O} (l \kappa^3)$-gradient Lipschiz
+</div>
+
 <br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+  (d) For $\lambda \geq 2L_f / \mu,$
+  
+  $$
+  \quad \vert\vert y^*_\lambda(x) - y^*(x) \vert\vert \leq \dfrac{C_f}{\lambda \mu}
+  $$
+</div>
+
+<br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+(e) Suppose $h(x): \mathbb{R}^d \rightarrow \mathbb{R}$ is $\beta$-gradient Lipschitz and $\alpha$-strongly convex. Consider the following update of gradient descent
+
+$$
+x_{t+1} = x_t - \dfrac{1}{\beta} \nabla h(x_t)
+$$
+
+Let $x^* = \underset{\substack{x \in \mathbb{R}^d}}{\arg\min} \;\; h(x)$. Then
+
+$$
+\vert\vert x_{t+1} -x^* \vert\vert^2 \leq \left( 1 - \dfrac{\alpha}{\beta} \right) \vert\vert x_t - x^* \vert\vert^2
+$$
+</div>
+
+<br>
+
+<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
+
+(f) If $f: \mathbb{R}^d \rightarrow \mathbb{R}$ is $L$-smooth then, for all $x, y \in \mathbb{R}^d$,
+
+$$
+f(y) \leq f(x) + \langle \nabla f(x), \;y - x\rangle + \dfrac{L}{2} \vert\vert y - x \vert\vert^2
+$$
+</div>
+
+<br><br><br>
 
 # Memo
 
