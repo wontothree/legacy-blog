@@ -521,6 +521,7 @@ $$
 
 And
 
+$$
 \begin{aligned}
 \vert\vert z^0_{t+1} - y^*(x_{t+1}) \vert\vert^2
 
@@ -538,6 +539,7 @@ And
 \\
 
 \end{aligned}
+$$
 
 <br><br><br>
 
