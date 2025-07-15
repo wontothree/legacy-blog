@@ -571,6 +571,17 @@ $$
 \end{aligned}
 $$
 
+$$
+\begin{aligned}
+\vert\vert y^0_{t} - y^*_{\lambda} (x_{t}) \vert\vert^2 + \vert\vert z^0_{t} - y^*(x_{t}) \vert\vert^2
+
+&\leq \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+\\
+
+\end{aligned}
+$$
+
 <br><br><br>
 
 ## Appendix Theorems
