@@ -487,7 +487,17 @@ $$
 \end{aligned}
 $$
 
-On the other hand,
+On the other hand, we can show is $y^*_\lambda (x)$ is $(4L_g/\mu)$-Lipschiz, thus,
+
+$$
+\begin{aligned}
+\vert\vert y^*_\lambda(x_{t+1}) - y^*_{\lambda}(x_t) \vert\vert
+
+\leq \dfrac{4L_g}{\mu} \vert\vert x_{t+1} - x_t \vert\vert
+\\
+
+\end{aligned}
+$$
 
 $$
 \begin{aligned}
@@ -508,6 +518,26 @@ $$
 
 \end{aligned}
 $$
+
+And
+
+\begin{aligned}
+\vert\vert z^0_{t+1} - y^*(x_{t+1}) \vert\vert^2
+
+&=\vert\vert z^K_{t} - y^*(x_{t+1}) \vert\vert^2
+\\
+
+&=\vert\vert z^K_{t} - y^*(x_t) + y^*(x_t) - y^*(x_{t+1}) \vert\vert^2
+\\
+
+&\leq 2\vert\vert z^K_{t} - y^*(x_t) \vert\vert^2 + 2\vert\vert y^*(x_t) - y^*(x_{t+1}) \vert\vert^2
+\\
+
+&\leq 2 \exp \left( -\dfrac{\mu K}{4L} \right) \vert\vert z^0_t - y^*(x_t) \vert\vert^2
++ \dfrac{2L_g^2}{\mu^2} \vert\vert x_{t+1} - x_t \vert\vert^2
+\\
+
+\end{aligned}
 
 <br><br><br>
 
