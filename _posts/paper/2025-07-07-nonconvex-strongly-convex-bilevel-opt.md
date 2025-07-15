@@ -499,6 +499,18 @@ $$
 \end{aligned}
 $$
 
+and $y^* (x)$ is $(L_g/\mu)$-Lipschiz
+
+$$
+\begin{aligned}
+\vert\vert y^*(x_{t+1}) - y^*(x_t) \vert\vert
+
+\leq \dfrac{L_g}{\mu} \vert\vert x_{t+1} - x_t \vert\vert
+\\
+
+\end{aligned}
+$$
+
 $$
 \begin{aligned}
 \vert\vert y^0_{t+1} - y^*_{\lambda} (x_{t+1}) \vert\vert^2
@@ -541,9 +553,7 @@ $$
 \end{aligned}
 $$
 
-Therefore
-
-Let $K \geq(8L_g/\mu)$, then
+Let $K \geq(8L_g/\mu)$, then therefore
 
 $$
 \begin{aligned}
