@@ -443,7 +443,7 @@ $$
 \end{aligned}
 $$
 
-## Step 2
+### Step 2
 
 On the other side, the following inequality is given
 
@@ -587,7 +587,7 @@ $$
 \end{aligned}
 $$
 
-## Step 4
+### Step 4
 
 $$
 \begin{aligned}
