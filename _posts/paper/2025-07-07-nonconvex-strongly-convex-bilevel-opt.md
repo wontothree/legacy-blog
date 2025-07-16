@@ -282,6 +282,8 @@ $$
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
 
+## Theorem
+
 **Assumption**
 
 1. $g(x, y)$ is $\mu$-strongly convex in $y$
@@ -294,19 +296,7 @@ F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-
 
 <br>
 
-<div style="border: 2px solid #444; padding: 15px; border-radius: 4px">
-
 Notation
-
-$$
-\Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \varphi (x), \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
-$$
-
-Setting Parameters
-
-$$
-\eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
-$$
 
 F^2BA find $\epsilon$-first-order stationary point of $\varphi(x)$ in
 
@@ -319,7 +309,16 @@ Where
 $$
 l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
 $$
-</div>
+
+$$
+\Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \varphi (x), \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
+$$
+
+Setting Parameters
+
+$$
+\eta = l^{-1} \kappa^{-3}, \quad \lambda \asymp \max \left[ \kappa / R, \; l \kappa^2 / \Delta, \; l \kappa^3 / \epsilon \right], \quad \alpha = \dfrac{1}{L_g}, \quad \tau = \dfrac{1}{2\lambda L_g}, \quad K = \mathcal{O} \left( \dfrac{L_g}{\mu} \log \dfrac{\lambda L_g}{\mu} \right)
+$$
 
 <br>
 
@@ -368,6 +367,8 @@ x_{t+1} - x_t = - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
 $$
 
 우리는 $\mathcal{L}^*_{\lambda}(x_t)$가 $L$-smooth하다는 것을 보일 수 있다.
+
+### Step 1
 
 Let $\eta \leq 1/(2L)$, and then by (f) and (1),
 
@@ -442,6 +443,8 @@ $$
 \end{aligned}
 $$
 
+## Step 2
+
 On the other side, the following inequality is given
 
 $$
@@ -486,6 +489,8 @@ $$
 
 \end{aligned}
 $$
+
+### Step 3
 
 On the other hand, we can show is $y^*_\lambda (x)$ is $(4L_g/\mu)$-Lipschiz, thus,
 
@@ -582,6 +587,91 @@ $$
 \end{aligned}
 $$
 
+## Step 4
+
+$$
+\begin{aligned}
+\mathcal{L}^*_\lambda(x_{t+1}) 
+
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
+\\
+ &\quad + \dfrac{\eta}{2} \cdot 8 \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
+\\
+ &\quad + 4\eta \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left[ \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+ \right]
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
+\\
+ &\quad + 4\eta \gamma \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+ \right]
+\\
+
+\end{aligned}
+$$
+
+where
+
+$$
+\gamma = \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right)
+$$
+
+Telescoping over t
+
+$$
+\begin{aligned}
+\dfrac{\eta}{2} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
+
+&\leq \sum_{t=0}^{T-1} \left( \mathcal{L}^*_\lambda(x_t) - \mathcal{L}^*_\lambda(x_{t+1}) \right)
+- \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+&\quad + 4\eta \gamma \sum_{t=0}^{T-1} \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+ \right]
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \mathcal{L}^*_\lambda(x_{T})
+- \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{136 \eta \gamma L_g^2}{\mu^2} \sum_{t=0}^{T-1} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \mathcal{L}^*_\lambda(x_{T})
+- \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{136 \eta \gamma L_g^2}{\mu^2}  \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
+- \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{136 \eta \gamma L_g^2}{\mu^2}  \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
++ 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+\\
+&\quad - \left( \dfrac{1}{4\eta}
+- \dfrac{136 \eta \gamma L_g^2}{\mu^2} \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+
+\end{aligned}
+$$
+
 <br><br><br>
 
 ## Appendix Theorems
@@ -649,17 +739,6 @@ $$
 </div>
 
 <br><br><br>
-
-# Memo
-
-일반적인 경우라면 g가 mu strongly convex이어야 할텐데 여기서처럼 proxy를 사용할테 mu strongly convex이어야 해?
-
-1. 이 세팅에서 강한 볼록성을 줄 수 있을까?
-2. 강한 볼록성이 없는 경우 현실적인 다른 relaxation을 할 수는 없을까?
-
-<br>
-<br>
-<br>
 
 # Exercise
 
