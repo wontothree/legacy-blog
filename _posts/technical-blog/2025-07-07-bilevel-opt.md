@@ -1,7 +1,7 @@
 ---
 title: "[OPT] Solving Diterministic Nonconvex-Strongly-Convex Bilevel Optimization"
 categories:
-  - paper
+  - technical-blog
 ---
 # Formulating Problem
 

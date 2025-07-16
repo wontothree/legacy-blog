@@ -4,6 +4,11 @@ main:
    url: https://wontothree.github.io/career/
 
 sidebar-category:
+  - title: "Technical Blog"
+    children:
+      - title: "Posts"
+        url: /technical-blog
+
   - title: "Robotics"
     children:
       - title: "Probabilistic Robotics"
@@ -12,6 +17,7 @@ sidebar-category:
         url: /digitalcontrol
       - title: "Optimal Control"
         url: /optimalcontrol  
+
   - title: "Computer Science"
     children:
       - title: "Java"
@@ -24,6 +30,7 @@ sidebar-category:
         url: /machinelearning
       - title: "Reinforcement Learning"
         url: /reinforcementlearning
+
   - title: "Electrical Engineering"
     children:
       - title: "Microprocessor"
@@ -38,6 +45,7 @@ sidebar-category:
         url: /laboratory
       - title: "AI Semiconductor"
         url: /aisemiconductor
+
   - title: "Mathematics"
     children:
       - title: "Real Analysis"
@@ -50,6 +58,7 @@ sidebar-category:
         url: /optimization
       - title: "Engineering Mathematics"
         url: /engineeringmathematics  
+
   - title: "Temp"
     children:
       - title: "Paper"

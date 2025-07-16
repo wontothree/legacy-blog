@@ -1,7 +1,7 @@
 ---
 title: "[F1tenth] Kinematics and Dynamics of Vehicle"
 categories:
-  - project
+  - technical-blog
 ---
 # 1. Kinematic Bycycle Model (Single Track Model)
 
