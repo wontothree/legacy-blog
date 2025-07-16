@@ -1,5 +1,5 @@
 ---
-title: "[OPT] Solving Diterministic Nonconvex-Strongly-Convex Bilevel Optimization"
+title: "[OPT] How to Solve Bilevel Optimization"
 categories:
   - paper
 ---
@@ -278,7 +278,7 @@ $$
 <br>
 <br>
 
-# Proof of convergence in F^2BA
+# Convergence Rate in F^2BA
 
 F2BA has a upper complexity bound of $\tilde{\mathcal{O}}(\epsilon^{-2})$, near-optimal rate achieved by second-order methods.
 
