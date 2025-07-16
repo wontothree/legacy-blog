@@ -183,7 +183,7 @@ $$
 
 The following expansion make the algorithm readable
 
-<!-- <div class="latex-container"> -->
+<div class="latex-container">
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-<!-- </div> -->
+</div>
 
 <br>
 <br>
