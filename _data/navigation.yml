@@ -63,8 +63,6 @@ sidebar-category:
     children:
       - title: "Paper"
         url: /paper
-      - title: "Project"
-        url: /project 
       - title: "Tmp"
         url: /tmp        
       - title: "ROS2"

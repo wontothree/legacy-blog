@@ -183,7 +183,7 @@ $$
 
 The following expansion make the algorithm readable
 
-<div class="latex-container">
+<!-- <div class="latex-container"> -->
 $$
 \begin{align*}
   \underset{
@@ -272,7 +272,7 @@ $$
   }{\arg\min} \; g(x, z)}_{(5)}\right) \right]}_{(8), (9)} \right)\\
 \end{align*}
 $$
-</div>
+<!-- </div> -->
 
 <br>
 <br>
@@ -304,11 +304,13 @@ $$
 T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
 $$
 
-Where
+where
 
 $$
 l := \max \left[ C_f, \; L_f, \; L_g, \; \rho_g \right], \quad \kappa := \dfrac{l}{\mu}
 $$
+
+Define
 
 $$
 \Delta := \varphi(x_0) - \underset{\substack{x \in \mathbb{R}^dx}}{\inf} \varphi (x), \quad R: = \vert\vert y_0 - y^*(x_0) \vert\vert^2
@@ -358,17 +360,19 @@ $$
 x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
 $$
 
-즉,
+or
 
 $$
-\begin{align}
+\begin{aligned}
 x_{t+1} - x_t = - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
-\end{align}
+\end{aligned}
 $$
 
-우리는 $\mathcal{L}^*_{\lambda}(x_t)$가 $L$-smooth하다는 것을 보일 수 있다.
+<br>
 
 ### Step 1
+
+We can show that  $\mathcal{L}^*_{\lambda}(x_t)$ is $L$-smooth.
 
 Let $\eta \leq 1/(2L)$, and then by (f) and (1),
 
@@ -443,6 +447,23 @@ $$
 \end{aligned}
 $$
 
+Therefore, we obtain the following
+
+$$
+\begin{aligned}
+\mathcal{L}^*_\lambda(x_{t+1}) 
+
+&\leq \mathcal{L}^*_\lambda(x_t) 
+- \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
+- \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
++ \dfrac{\eta}{2} \|\hat{\nabla} \mathcal{L}^*_\lambda(x_t) - \nabla \mathcal{L}^*_\lambda(x_t)\|^2
+\\
+
+\end{aligned}
+$$
+
+<br>
+
 ### Step 2
 
 On the other side, the following inequality is given
@@ -489,6 +510,20 @@ $$
 
 \end{aligned}
 $$
+
+Therefore, we obtain the following
+
+$$
+\begin{aligned}
+\vert\vert \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t) - \nabla \mathcal{L}^*_{\lambda}(x_t) \vert\vert^2
+
+&\leq 8 \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left(\vert\vert y^0_t - y^*_{\lambda} (x_t) \vert\vert^2 + \vert\vert z^0_t - y^* (x_t) \vert\vert^2 \right)
+\\
+
+\end{aligned}
+$$
+
+<br>
 
 ### Step 3
 
@@ -558,7 +593,7 @@ $$
 \end{aligned}
 $$
 
-Let $K \geq(8L_g/\mu)$, then therefore
+Let $K \geq(8L_g/\mu)$, then 
 
 $$
 \begin{aligned}
@@ -576,6 +611,8 @@ $$
 \end{aligned}
 $$
 
+Therefore we obtain the following
+
 $$
 \begin{aligned}
 \vert\vert y^0_{t} - y^*_{\lambda} (x_{t}) \vert\vert^2 + \vert\vert z^0_{t} - y^*(x_{t}) \vert\vert^2
@@ -586,6 +623,8 @@ $$
 
 \end{aligned}
 $$
+
+<br>
 
 ### Step 4
 
@@ -627,7 +666,7 @@ $$
 \gamma = \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right)
 $$
 
-Telescoping over t
+Telescoping over $t$
 
 $$
 \begin{aligned}
