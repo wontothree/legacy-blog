@@ -466,7 +466,7 @@ $$
 
 ### Step 2
 
-On the other side, the following inequality is given
+The following inequality is given
 
 $$
 \begin{aligned}
@@ -527,7 +527,7 @@ $$
 
 ### Step 3
 
-On the other hand, we can show is $y^*_\lambda (x)$ is $(4L_g/\mu)$-Lipschiz, thus,
+We can show is $y^*_\lambda (x)$ is $(4L_g/\mu)$-Lipschiz, thus,
 
 $$
 \begin{aligned}
@@ -687,11 +687,11 @@ $$
 + \dfrac{136 \eta \gamma L_g^2}{\mu^2} \sum_{t=0}^{T-1} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
 \\
 
-&\leq \mathcal{L}^*_\lambda(x_0) - \mathcal{L}^*_\lambda(x_{T})
+&\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
 - \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
 &\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
-+ \dfrac{136 \eta \gamma L_g^2}{\mu^2}  \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
++ \dfrac{136 \eta \gamma L_g^2}{\mu^2} \sum_{t=0}^{T-1} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
 \\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
@@ -706,6 +706,36 @@ $$
 \\
 &\quad - \left( \dfrac{1}{4\eta}
 - \dfrac{136 \eta \gamma L_g^2}{\mu^2} \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
++ 4\eta \left( \dfrac{1}{4\eta} \right) \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+\\
+&\quad - \left( \dfrac{1}{4\eta}
+- \dfrac{136 \eta L_g^2}{\mu^2} \left( \dfrac{\mu^2}{1088\eta^2 L_g^2} \right) \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
+\\a
+
+&\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
++ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2
+\\
+
+\end{aligned}
+$$
+
+where
+
+$$
+\gamma \leq \min \left\{ \dfrac{\mu^2}{1088 \eta^2 L_g^2}, \; \dfrac{1}{4\eta} \right\}
+$$
+
+Therefore we have
+
+$$
+\begin{aligned}
+\dfrac{1}{T} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
+
+&\leq \dfrac{2}{\eta T} \left( \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
++ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
 \\
 
 \end{aligned}
