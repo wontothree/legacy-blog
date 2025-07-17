@@ -301,7 +301,7 @@ Notation
 F^2BA find $\epsilon$-first-order stationary point of $\varphi(x)$ in
 
 $$
-T = \mathcal{O}(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon})
+T = \mathcal{O}\left(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon} \right)
 $$
 
 where
@@ -352,7 +352,7 @@ $$
 \vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert^2 = \mathcal{O}(R)
 $$
 
-Now it suffices to show that the algorithm can find an $\epsilon$-first-roder stationary of $\mathcal{L}^*_{\lambda}(x)$
+Now it suffices to show that the algorithm can find an $\epsilon$-first-order stationary of $\mathcal{L}^*_{\lambda}(x)$
 
 Consider the following update of gradient descent
 
