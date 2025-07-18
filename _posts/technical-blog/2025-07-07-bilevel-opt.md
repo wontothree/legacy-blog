@@ -380,6 +380,7 @@ We can show that  $\mathcal{L}^*_{\lambda}(x_t)$ is $L$-smooth.
 
 Let $\eta \leq 1/(2L)$, and then by (f) and (1),
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \mathcal{L}^*_\lambda(x_{t+1}) 
@@ -450,6 +451,7 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 Therefore, we obtain the following
 
@@ -623,6 +625,7 @@ $$
 
 &\leq \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+\\
 
 &\leq \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
@@ -635,6 +638,7 @@ $$
 
 ### Step 4
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \mathcal{L}^*_\lambda(x_{t+1}) 
@@ -666,6 +670,7 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 where
 
@@ -675,6 +680,7 @@ $$
 
 Telescoping over $t$
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \dfrac{\eta}{2} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
@@ -728,6 +734,7 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 where
 
