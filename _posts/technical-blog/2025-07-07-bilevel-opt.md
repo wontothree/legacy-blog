@@ -334,7 +334,7 @@ $$
 
 ## Proof
 
-## Step 0
+### Step 0
 
 Let $L$ be the gradient Lipschitz coefficient of $\mathcal{L}_{\lambda}^*(x)$.
 
@@ -748,7 +748,7 @@ $$
 \end{aligned}
 $$
 
-## Step 5
+### Step 5
 
 We make the following equality
 
