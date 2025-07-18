@@ -601,6 +601,7 @@ $$
 
 Let $K \geq(8L_g/\mu)$, then 
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \vert\vert y^0_{t+1} - y^*_{\lambda} (x_{t+1}) \vert\vert^2 + \vert\vert z^0_{t+1} - y^*(x_{t+1}) \vert\vert^2
@@ -616,9 +617,11 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 Therefore we obtain the following
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \vert\vert y^0_{t} - y^*_{\lambda} (x_{t}) \vert\vert^2 + \vert\vert z^0_{t} - y^*(x_{t}) \vert\vert^2
@@ -633,6 +636,7 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 <br>
 
