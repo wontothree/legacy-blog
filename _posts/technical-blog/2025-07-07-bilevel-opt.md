@@ -730,7 +730,7 @@ $$
 \\
 &\quad - \left( \dfrac{1}{4\eta}
 - \dfrac{136 \eta L_g^2}{\mu^2} \left( \dfrac{\mu^2}{1088\eta^2 L_g^2} \right) \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
-\\a
+\\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
 + \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2
