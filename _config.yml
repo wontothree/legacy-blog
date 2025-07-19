@@ -128,7 +128,7 @@ footer:
       # url:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkinin"
-      url: "https://www.linkedin.com/in/sewon-kim-75698a242/"
+      url: "www.linkedin.com/in/wontothree"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/wontothree"
@@ -247,6 +247,8 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+
 # https://github.com/jekyll/jekyll-archives
 # jekyll-archives:
 #   enabled:
