@@ -1,5 +1,5 @@
 ---
-title: "[Optimization] Prediction and Optimization in MPC"
+title: "[Optimal Control] Prediction and Optimization in MPC"
 categories:
   - technical-blog
 ---
