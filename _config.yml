@@ -142,7 +142,6 @@ footer:
       icon: "fab fa-fw fa-instagram"
       url: "https://www.instagram.com/won_to_three/"
 
-
 # Reading Files
 include:
   - .htaccess
