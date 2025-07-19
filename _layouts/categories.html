@@ -17,7 +17,11 @@ layout: archive <!-- archive layout 기반 -->
       {% if category[1].size == i %}
         <li>
           <!-- <a href="#{{ category[0] | slugify }}"> -->
-          <a href="{{ site.baseurl }}">
+          <!-- <a href="{{ site.baseurl }}">
+            <strong>{{ category[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
+          </a> -->
+
+          <a href="{{ site.baseurl }}/{{ category[0] | slugify }}">
             <strong>{{ category[0] }}</strong> <span class="taxonomy__count">{{ i }}</span>
           </a>
         </li>
@@ -37,8 +41,7 @@ layout: archive <!-- archive layout 기반 -->
             {% include archive-single.html type=entries_layout %}
           {% endfor %}
         </div>
-        <!-- <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a> -->
-        <a href="page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
+        <a href="#page-title" class="back-to-top">{{ site.data.ui-text[site.locale].back_to_top | default: 'Back to Top' }} &uarr;</a>
       </section>
     {% endif %}
   {% endfor %}
