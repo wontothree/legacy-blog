@@ -17,7 +17,7 @@ $$
 \end{align*}
 $$
 
-where the lower-level problem is
+where is
 
 $$
 \begin{align*}
@@ -29,6 +29,14 @@ $$
 }{\arg\min} \;\; g(x, y)
 \end{align*}
 $$
+
+- $f$ : upper-level problem
+- $g$ : lower-level problem
+- $\varphi$ : hyper-objective
+
+In general, $\varphi (x)$ can be non-differientiable, discontinuous, or nonconvex, and $g$ is strong convex.
+
+So this problem is called nonconvex-strongly-convex bilevel optimiation.
 
 ## Relaxation
 
@@ -326,6 +334,8 @@ $$
 
 ## Proof
 
+### Step 0
+
 Let $L$ be the gradient Lipschitz coefficient of $\mathcal{L}_{\lambda}^*(x)$.
 
 By (a),
@@ -352,20 +362,14 @@ $$
 \vert\vert y_0 - y^*_\lambda(x_0) \vert\vert^2 + \vert\vert y_0 - y^*(x_0) \vert\vert^2 = \mathcal{O}(R)
 $$
 
+<br>
+
 Now it suffices to show that the algorithm can find an $\epsilon$-first-order stationary of $\mathcal{L}^*_{\lambda}(x)$
 
 Consider the following update of gradient descent
 
 $$
 x_{t+1} = x_t - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
-$$
-
-or
-
-$$
-\begin{aligned}
-x_{t+1} - x_t = - \eta \hat{\nabla} \mathcal{L}^*_{\lambda}(x_t)
-\end{aligned}
 $$
 
 <br>
@@ -376,6 +380,7 @@ We can show that  $\mathcal{L}^*_{\lambda}(x_t)$ is $L$-smooth.
 
 Let $\eta \leq 1/(2L)$, and then by (f) and (1),
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \mathcal{L}^*_\lambda(x_{t+1}) 
@@ -446,6 +451,7 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 Therefore, we obtain the following
 
@@ -595,6 +601,7 @@ $$
 
 Let $K \geq(8L_g/\mu)$, then 
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \vert\vert y^0_{t+1} - y^*_{\lambda} (x_{t+1}) \vert\vert^2 + \vert\vert z^0_{t+1} - y^*(x_{t+1}) \vert\vert^2
@@ -610,9 +617,11 @@ $$
 
 \end{aligned}
 $$
+</div>
 
 Therefore we obtain the following
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \vert\vert y^0_{t} - y^*_{\lambda} (x_{t}) \vert\vert^2 + \vert\vert z^0_{t} - y^*(x_{t}) \vert\vert^2
@@ -621,13 +630,19 @@ $$
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
 \\
 
+&\leq \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
+\\
+
 \end{aligned}
 $$
+</div>
 
 <br>
 
 ### Step 4
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \mathcal{L}^*_\lambda(x_{t+1}) 
@@ -643,7 +658,7 @@ $$
 - \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
 - \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
 \\
- &\quad + 4\eta \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left[ \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+ &\quad + 4\eta \lambda^2 L_g^2 \exp\left(-\dfrac{\mu K}{4L_g}\right) \left[ \left(\dfrac{1}{2}\right)^t \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
  \right]
 \\
@@ -652,13 +667,14 @@ $$
 - \dfrac{\eta}{2} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2 
 - \dfrac{1}{4\eta}\left\| x_{t+1} - x_t \right\|^2 
 \\
- &\quad + 4\eta \gamma \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+ &\quad + 4\eta \gamma \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
  \right]
 \\
 
 \end{aligned}
 $$
+</div>
 
 where
 
@@ -668,6 +684,7 @@ $$
 
 Telescoping over $t$
 
+<div class="latex-container">
 $$
 \begin{aligned}
 \dfrac{\eta}{2} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
@@ -675,7 +692,7 @@ $$
 &\leq \sum_{t=0}^{T-1} \left( \mathcal{L}^*_\lambda(x_t) - \mathcal{L}^*_\lambda(x_{t+1}) \right)
 - \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
-&\quad + 4\eta \gamma \sum_{t=0}^{T-1} \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+&\quad + 4\eta \gamma \sum_{t=0}^{T-1} \left[ \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{34L_g^2}{\mu^2} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
  \right]
 \\
@@ -683,44 +700,45 @@ $$
 &\leq \mathcal{L}^*_\lambda(x_0) - \mathcal{L}^*_\lambda(x_{T})
 - \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
-&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{136 \eta \gamma L_g^2}{\mu^2} \sum_{t=0}^{T-1} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
 \\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
 - \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
-&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{136 \eta \gamma L_g^2}{\mu^2} \sum_{t=0}^{T-1} \sum_{j=0}^{t-1} \left( \dfrac{1}{2}\right)^{t-1-j} \vert\vert x_{j+1} - x_j \vert\vert^2
 \\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
 - \dfrac{1}{4\eta} \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
-&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
+&\quad + 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 + \dfrac{136 \eta \gamma L_g^2}{\mu^2}  \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
-+ 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ 4\eta \gamma \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 \\
 &\quad - \left( \dfrac{1}{4\eta}
 - \dfrac{136 \eta \gamma L_g^2}{\mu^2} \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
 \\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
-+ 4\eta \left( \dfrac{1}{4\eta} \right) \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ 4\eta \left( \dfrac{1}{4\eta} \right) \left( \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 \\
 &\quad - \left( \dfrac{1}{4\eta}
 - \dfrac{136 \eta L_g^2}{\mu^2} \left( \dfrac{\mu^2}{1088\eta^2 L_g^2} \right) \right) \sum_{t=0}^{T-1} \left\| x_{t+1} - x_t \right\|^2 
-\\a
+\\
 
 &\leq \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
-+ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2
++ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2
 \\
 
 \end{aligned}
 $$
+</div>
 
 where
 
@@ -735,15 +753,66 @@ $$
 \dfrac{1}{T} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
 
 &\leq \dfrac{2}{\eta T} \left( \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
-+ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert z^0_0 - y^*(x_0) \vert\vert^2 \right)
++ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
 \\
 
 \end{aligned}
 $$
 
+### Step 5
+
+We make the following equality
+
+$$
+\begin{aligned}
+\dfrac{1}{T} \sum_{t=0}^{T-1} \|\nabla \mathcal{L}^*_\lambda(x_t)\|^2
+
+&\leq \dfrac{2}{\eta T} \left( \mathcal{L}^*_\lambda(x_0) - \underset{\substack{x \in \mathbb{R}^{d_x}}}{\inf} \mathcal{L}^*_\lambda(x)
++ \vert\vert y^0_0 - y^*_{\lambda} (x_0) \vert\vert^2 + \vert\vert y^0_0 - y^*(x_0) \vert\vert^2 \right)
+
+\leq \epsilon^2
+
+\end{aligned}
+$$
+
+and then
+
+$$
+\begin{aligned}
+
+\epsilon^2
+
+\geq \dfrac{1}{\eta T} C
+
+= \dfrac{l \kappa^3}{T} C
+
+\end{aligned}
+$$
+
+where $C$ is constant.
+
+Complexity of Outer loop iteration is
+
+$$
+T \geq \mathcal{O}(l \kappa^3 \epsilon^{-2})
+$$
+
+Complexity of inner loop iteration is
+
+$$
+K = \mathcal{O} \left( \kappa \log \dfrac{l \kappa}{\epsilon} \right)
+$$
+
+Therefore, we have complexity of F^2BA
+
+$$
+T = \mathcal{O}(l \kappa^3 \epsilon^{-2}) \cdot \mathcal{O} \left( \kappa \log \dfrac{l \kappa}{\epsilon} \right)
+= \mathcal{O}\left(l \kappa^4 \epsilon^{-2} \log \dfrac{l \kappa}{\epsilon} \right) 
+$$
+
 <br><br><br>
 
-## Appendix Theorems
+# Appendix
 
 <div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px"> (a)
 
@@ -808,135 +877,6 @@ $$
 </div>
 
 <br><br><br>
-
-# Exercise
-
-## Exercise 1
-
-$$
-\begin{align*}
-\underset{
-\substack{
-  x \in \mathbb{R}
-}
-}{\min} \; f(x, y^*(x))
-\end{align*}
-$$
-
-where the lower-level problem is
-
-$$
-\begin{align*}
-  y^*(x) = \;
-  & \underset{
-  \substack{
-    y \in \mathbb{R}^dy
-  }
-}{\arg\min} \;\; g(x, y)
-\end{align*}
-$$
-
-여기서 만약 $f(x, y) = - g(x, y)$ 이라면?
-
-$$
-\begin{align*}
-y^*(x)
-&=
-\underset{
-\substack{
-  y \in \mathbb{R}^dy
-}
-}{\arg\min} \; g(x, y) \\
-&=
-\underset{
-\substack{
-  y \in \mathbb{R}^dy
-}
-}{\arg\min} \; -f(x, y) \\
-&=
-\underset{
-\substack{
-  y \in \mathbb{R}^dy
-}
-}{\arg\max} \; f(x, y) \\
-\end{align*}
-$$
-
-이므로
-
-$$
-\begin{align*}
-\underset{
-\substack{
-  x \in \mathbb{R}
-}
-}{\min} \; f(x, y^*(x))
-&=
-\underset{
-\substack{
-  x \in \mathbb{R}
-}
-}{\min} \; f(x,
-\underset{
-\substack{
-  y \in \mathbb{R}^dy
-}
-}{\arg\max} \; f(x, y)
-) \\
-&=
-\underset{
-\substack{
-  x \in \mathbb{R}
-}
-}{\min} \;
-\underset{
-\substack{
-  y \in \mathbb{R}
-}
-}{\max}
-\; f(x, y)
-\end{align*}
-$$
-
-## Exercise 2
-
-<div style="border: 1px solid #ccc; padding: 15px; border-radius: 4px">
-When the lower-level problem is strongly convex in $y$,
-
-$$
-\begin{align*}
-  \nabla \varphi(x)
-  &= \nabla_x f(x, y^*(x)) + \nabla y^*(x) \nabla_y f(x, y^*(x)) \\
-  &= \nabla_x f(x, y^*(x)) - \nabla_{xy}^2 g(x, y^*(x)) [ \nabla_{yy}^2 g(x, y^*(x))]^{-1} \nabla_y f(x, y^*(x))
-\end{align*}
-$$
-</div>
-
-<br>
-
-*Proof.*
-
-g에 대한 first order optimality condition에 의해
-
-$$
-\begin{aligned}
-0
-&= \nabla_y g(x, y^*(x)) \\
-&= \nabla^2_{xy} g(x, y^*(x)) + \nabla^2_{yy} g(x, y^*(x)) \cdot \nabla y^*(x)
-\end{aligned}
-$$
-
-에서
-
-$$
-\nabla y^*(x) = - [\nabla^2_{yy} g(x, y^*(x))]^{-1} \nabla^2_{xy} g(x, y^*(x))
-$$
-
-g가 strongly convex해야 $[\nabla^2_{yy} g(x, y^*(x))]$의 역행렬이 존재한다.
-
-<br>
-<br>
-<br>
 
 # Reference
 
