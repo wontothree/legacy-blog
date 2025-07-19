@@ -1,7 +1,7 @@
 ---
-title: "[MPC] Prediction and Optimization"
+title: "[Optimization] Prediction and Optimization in MPC"
 categories:
-  - optimalcontrol
+  - technical-blog
 ---
 ## 1. Predictive equations
 

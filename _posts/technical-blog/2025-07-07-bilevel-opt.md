@@ -1,5 +1,5 @@
 ---
-title: "[OPT] How to Solve Bilevel Optimization"
+title: "[Optimization] How to Solve Bilevel Optimization"
 categories:
   - technical-blog
 ---

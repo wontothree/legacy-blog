@@ -1,8 +1,10 @@
 ---
-title: "[MPC] Introduction to MPC"
+title: "[Optimal Control] MPC Evangelist"
 categories:
-  - optimalcontrol
+  - technical-blog
 ---
+Introduction to MPC
+
 - Model Predictive Control is an optimal control strategy based on numerical optimiation.
 - Future control inputs and future plant responses are predicted using a system model and optimized at regular intervals with respect to a performance index.
 - MPC provides a systematic method of dealing with constraints on inputs and states. The constraints represent limitations on actuators and plant states arising from physical, economic, or safety constraints.

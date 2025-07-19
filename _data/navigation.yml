@@ -15,8 +15,6 @@ sidebar-category:
         url: /probablisticrobotics
       - title: "Digital Control"
         url: /digitalcontrol
-      - title: "Optimal Control"
-        url: /optimalcontrol  
 
   - title: "Computer Science"
     children:
