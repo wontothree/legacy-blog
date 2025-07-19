@@ -128,7 +128,7 @@ footer:
       # url:
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkinin"
-      url: "www.linkedin.com/in/wontothree"
+      url: "https://www.linkedin.com/in/wontothree"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/wontothree"
