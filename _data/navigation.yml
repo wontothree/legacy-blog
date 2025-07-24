@@ -52,8 +52,6 @@ sidebar-category:
         url: /discretemathematics               
       - title: "Differential Equation"
         url: /differentialequation
-      - title: "Optimization"
-        url: /optimization
       - title: "Engineering Mathematics"
         url: /engineeringmathematics  
 
