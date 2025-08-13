@@ -21,10 +21,12 @@ docker version
 mkdir .devcontainer
 ```
 
+```txt
   orb_slam3_ws
   └── .devcontainer/
       ├── Dockerfile
       └── devcontainer.json
+```
 
 1. Ctrl + Shift + P
 2. .devcontainer 폴더와 내부 파일 구성
@@ -64,9 +66,9 @@ docker run [options] [image_name]
 docker run --platform linux/amd64 -it ros:jazzy-ros-base
 ```
 
-*--platform linux/amd64* docker container를 AMD64 architecture (Intel/AMD 기반)로 실행한다. M1 Mac은 ARM64 architecture인데 ROS official docker images은 기본적으로 AMD64용으로 build된다. M1에서 AMD64 image를 돌리기 위해 이 option을 줘야 한다. 그렇지 않으면 M1에서 실행 시 architecture 불일치로 error가 나거나 image가 없다고 뜬다.
+`--platform linux/amd64` docker container를 AMD64 architecture (Intel/AMD 기반)로 실행한다. M1 Mac은 ARM64 architecture인데 ROS official docker images은 기본적으로 AMD64용으로 build된다. M1에서 AMD64 image를 돌리기 위해 이 option을 줘야 한다. 그렇지 않으면 M1에서 실행 시 architecture 불일치로 error가 나거나 image가 없다고 뜬다.
 
-*-it* interactive, pseudo-TTY 이 두 옵션은 terminal에서 container 내부 shell에 접속할 수 있게 해준다. 즉, container 안에서 bash 같은 shell을 사용할 수 있다.
+`-it` interactive, pseudo-TTY 이 두 옵션은 terminal에서 container 내부 shell에 접속할 수 있게 해준다. 즉, container 안에서 bash 같은 shell을 사용할 수 있다.
 
 ```bash
 kevinliam@Kevins-MacBook-Air orb_slam3_ws % docker run --platform linux/amd64 -it --rm ros:jazzy-ros-base
