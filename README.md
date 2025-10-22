@@ -1,6 +1,4 @@
-# wontothree.github.io
-
-[Anthony Garcia's Technical Blog](https://wontothree.github.io/techblog/)
+# [wontothree.github.io/legacy-blog](https://wontothree.github.io/legacy-blog/)
 
     wontothree.github.io
     ├── _data
